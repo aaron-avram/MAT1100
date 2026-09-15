@@ -157,4 +157,74 @@
     \[ \{ e, s, r^2, r^2s \} = K_4 \]
     the Klein 4-group.
 \end{example}
+
+\subsection{Group Actions}
+\begin{definition}
+    The actiion of a group $G$ on a set $X \neq \varnothing$ is a map
+    \[ G \times X \to X \]
+    given by
+    \[ (g, x) \mapsto g \cdot x \]
+    such that 
+    \[ e \cdot x = x \quad \forall x \in X \]
+    and
+    \[ (gh) \cdot x = g \cdot (h \cdot x) \forall x \in X \]
+\end{definition}
+\begin{example}
+    \begin{enumerate}
+        \item[]
+        \item[(1)]
+        $D_8 \curvearrowright V$ where $V = \{ 1, 2, 3, 4 \}$ are the vertices of the unit square.
+        This action is given by:
+        \[ (g, i) \mapsto g \cdot i = \sigma_g(i) \]
+        where $\sigma_g$ is the permutation of the vertices associated with $g$.
+
+        \item[(2)]
+        $D_8 \curvearrowright \Delta = \{ d_1, d_2 \}$
+        \[ g \cdot \{i, j\} = \{ g(i), g(j) \} \]
+        by adjacency.
+    \end{enumerate}
+\end{example}
+\begin{theorem}
+    Let $G \curvearrowright X$ be an action of a group $G$ on a set $X$.
+    Then for each $g \in G$ the map
+    \[ \rho(g): X \to X \]
+    given by
+    \[ \rho(g)(x) = g \cdot x \]
+    is a bijection with inverse $\rho(g^{-1})$ and the map
+    \[ \rho: G \to \operatorname{Sym}(X) \]
+    given by:
+    \[ \rho: g \to \rho(g) \]
+    is a group homomorphism.
+\end{theorem}
+\begin{remark}
+    The converse is also true, a homomorphism $\rho: G \to \operatorname{Sym}(X)$
+    induces an action.
+\end{remark}
+\begin{definition}
+    For an action $G \to X$ the orbit of $x \in X$ is $\mathcal O_x = \{ g \cdot x : g \in G \}$.
+    An action is transitive if it has only one orbit.
+\end{definition}
+\begin{proposition}
+    The relation on $X$ given by $a \sim b \iff \exists g \in G$ s.t. $g \cdot a = b$
+    is an equivalence relation, and its equivalence classes are the distinct orbits of $X$.
+\end{proposition}
+\begin{proposition}
+    A subgroup $H \leq G$ induces an action $H \curvearrowright G$ given by
+    \[ h \cdot g = gh^{-1} \]
+    and its orbits
+    \[ \mathcal O_g = \{ h \cdot g : h \in H \} = \{ gh^{-1} : h \in H \} = gH \]
+    is called the left coset of $g$ in $H$.
+    It is clear $|gH| = |H|$.
+\end{proposition}
+\begin{definition}
+    Write $G/H$ to be the set of left cosets, then
+    \[ [G: H] = \#(G/H) \]
+\end{definition}
+\begin{theorem}
+    If $H \leq G$ we have $|G| = |H| [G:H]$. In particular the order of a subgroup
+    divides the order of $G$
+\end{theorem}
+\begin{corollary}
+    The order of an element divides the order of the group.
+\end{corollary}
 \end{document}
