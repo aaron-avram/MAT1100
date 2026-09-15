@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 1}
+\author{Aaron Avram}
+\date{September 15 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 1}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Consider $\sigma, \tau \in S_4$ then
+        \[ (\sigma \circ \tau) \cdot (i, j) = \Big(\sigma \circ \tau(i), \sigma \circ \tau(j)\Big) = \sigma \cdot \Big(\tau(i), \tau(j)\Big) = \sigma \cdot \Big(\tau \cdot (i, j) \Big) \]
+        and
+        \[ \operatorname{Id}\cdot (i, j) = \Big(\operatorname{Id}(i), \operatorname{Id}(j) \Big) = (i, j) \]
+        for all $(i, j) \in X$ therefore this operation is an action of $S_4$ on $X$.
+
+        To determine the orbits of this action, first take $d = (i, i) \in X$ for $i \in \{ 1, 2, 3, 4 \}$.
+        Then for all $\sigma \in S_4$
+        \[ \sigma \cdot (i, i) = \Big(\sigma(i), \sigma(i)\Big) \]
+        therefore $\mathcal O_d \subseteq \{ (i, i) \in X : i \in \{ 1, 2, 3, 4 \} \}$.
+        Now take given $j \in \{ 1, 2, 3, 4 \}$, take $\sigma = (i, j)$
+        \[ \sigma \cdot (i, i) = (j, j) \]
+        therefore
+        \[ \mathcal O_d = \{ (i, i) \in X : i \in \{ 1, 2, 3, 4 \} \} \]
+        now consider $i \neq j \in \{ 1, 2, 3, 4 \}$. Given $\sigma \in S_4$,
+        it is bijective so $\sigma(i) \neq \sigma(j)$. Thus if $a = (i, j)$
+        \[ \mathcal O_a \subseteq \{ (i, j) \in X : i \neq j \in \{ 1, 2, 3, 4 \} \} \]
+        and moreover given $k \neq \ell \in \{ 1, 2, 3, 4 \}$ the permutation $\sigma = (i, k)(j, \ell)$
+        acts such that
+        \[ \sigma \cdot (i, j) = (k, \ell) \]
+        hence
+        \[ \mathcal O_a = \{ (i, j) \in X : i \neq j \in \{ 1, 2, 3, 4 \} \} \]
+        Clearly $\mathcal O_d \sqcup O_a = X$ hence these are the distinct orbits.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        Let $G = S_4$ and $G_x$ denote the stabilizer of $x \in X$. First consider $(1, 1) \in X$. $\sigma \in G_{(1, 1)} \iff \sigma \cdot (1, 1) = (1, 1) \iff \sigma(1) = 1$.
+        Therefore
+        \[ G_{(1, 1)} = \{ \sigma \in S_4 : \sigma(1) = 1 \} \]
+        clearly any permutation in the stabilizer can freely permute $\{ 2, 3, 4 \}$
+        and therefore
+        \[ |G_{(1, 1)}| = |S_3| = 6 \]
+
+        Now consider $(1, 2) \in X$. $\sigma \in G_{(1, 2)} \iff \sigma \cdot (1, 2) = (1, 2) \iff \sigma(1) = 1, \sigma(2) = 2$.
+        Thus
+        \[ G_{(1, 2)} = \{ \sigma \in S_4: \sigma(1) = 1, \sigma(2) = 2 \} \]
+        clearly any permutation in the stabilizer can freely permute $\{ 3, 4 \}$
+        and therefore
+        \[ |G_{(1, 2)}| = |S_2| = 2 \]
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        Consider $\sigma \in S_4$. Let $\rho: S_4 \to \operatorname{Sym}(X)$ be the permutation
+        representation of the action $S_4 \curvearrowright X$.
+        \[ \sigma \in \ker \rho \iff \forall (i, j) \in X, \sigma \cdot (i, j) = (i, j) \iff \forall i \in \{1, 2, 3, 4 \}, \sigma(i) = i \iff \sigma = \operatorname{Id} \]
+        hence $\ker \rho = \{ \operatorname{Id} \}$.
+    \end{proof}
+\end{enumerate}
+
+\end{document}
