@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 1}
+\author{Aaron Avram}
+\date{September 15 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 2}
+\end{align*}
+
+Let $G \curvearrowright X \neq \varnothing$ and let $G_x$ denote the stabilizer of $x \in X$.
+Let $\rho: G \to \operatorname{Sym}(X)$ denote the permutation representation of the action.
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Suppose $g \in G$ and $x, y \in X$ such that $g \cdot x = y$. Then clearly $x = g^{-1} \cdot y$.
+        \begin{enumerate}
+            \item[]
+            \item[($\subseteq$)] Suppose $h \in G_y$ it suffices to show $h \in gG_xg^{-1}$ and indeed
+            \[ g^{-1}hg \cdot x = g^{-1}h \cdot y = g^{-1} \cdot y = x \]
+            hence $g^{-1}hg \in G_x$ and therefore $G_y \subseteq gG_xg^{-1}$
+            \item[($\supseteq$)] Suppose $h \in G_x$ then
+            \[ ghg^{-1} \cdot y = gh \cdot x = g \cdot x = y \]
+            hence $ghg^{-1} \in G_y$ and therefore $gG_xg^{-1} \subseteq G_y$.
+        \end{enumerate}
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        First we show that $\ker \rho = \bigcap_{x \in X}G_x$.
+        \begin{enumerate}
+            \item[]
+            \item[($\subseteq$)] If $g \in \ker \rho$ then for all $x \in X$, $g \cdot x = x$.
+            Hence $g \in G_x$ for all $x \in X$ and so
+            \[ g \in \bigcap_{x \in X}G_x \]
+            \item[($\supseteq$)] If $g \in \bigcap_{x \in X}G_x$ then for all $x \in X$
+            $ g \in G_x$ and therefore $g \cdot x = x$ for all $x \in X$. In other words, $g \in \ker \rho$.
+        \end{enumerate}
+        If $G \curvearrowright X$ is transitive then given $x \in X$
+        \[ \mathcal O_x = \{ g \cdot x : g \in G \} = X \]
+        and by $(a)$, $\mathcal O_{gx} = g\mathcal O_x g^{-1}$. Thus
+        \[ \ker \rho = \bigcap_{x \in X}G_x = \bigcap_{g \in G}G_{g \cdot x} = \bigcap_{g \in G}gG_xg^{-1} \]
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        Fix $x \in X$. Let $\phi: G \to X$ be given by
+        \[ \phi(g) = g \cdot x \]
+        First we show that for all $y \in X$ there exists unique $g \in G$ such that
+        \[ g \cdot x = y \]
+        the existence of such a $G$ is evident as $G \curvearrowright X$ is transitive.
+        Therefore $\phi$ is surjective.
+
+        Now for uniqueness, suppose $g, h \in G$ such that
+        \[ g \cdot x = h \cdot x \]
+        then
+        \[ g^{-1}h \cdot x = x \]
+        hence $g^{-1}h \in G_x$. Now given $a \in G_x$, $gag^{-1} = a$
+        as $G$ is abelian hence $gG_xg^{-1} = G_x$ for all $g \in G$. Since $G \curvearrowright X$ is transitive
+        \[ \ker \rho = \bigcup_{g \in G} gG_xg^{-1} = \bigcap_{g \in G}G_x = G_x \]
+        hence $g^{-1}h \in G_x = \ker \rho$ and since $\rho$ is faithful this implies that
+        $g^{-1}h = e$ and $g = h$.
+
+        The uniqueness of the above element $g$ in turn implies that $\phi$ is injective.
+        Therefore $\phi$ is a bijection.
+    \end{proof}
+\end{enumerate}
+
+\end{document}
