@@ -1,0 +1,171 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 1}
+\author{Aaron Avram}
+\date{September 20 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 5}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Given $f_{a, b}, f_{c, d} \in A$ and $t \in \mathbb R$
+        \[ f_{a, b} \circ f_{c, d}(t) = f_{a, b}(ct + d) = a(ct + d) + b = act + ad + b = f_{ac, ad + b}(t) \]
+        and therefore
+        \[ f_{a, b} \circ f_{c, d} = f_{ac, ad + b} \]
+        hence function composition is a well defined as a binary operation on $A$. This is an associative operation as function composition is itself associative. 
+        Function composition has identity $I(t) = t$ for $t \in \mathbb R$ and this can be written as
+        \[ f(t) = 1 \cdot t + 0 = f_{1, 0}(t) \]
+        and $f_{1, 0} \in A$ hence $A$ has an identity for the group operation.
+        Finally to find an inverse for $f_{a, b}$ consider arbitrary $f_{c, d}$ such that
+        \[ f_{a, b} \circ f_{c, d} = f_{1, 0} \]
+        applied to a real number $t$ this becomes
+        \[ f_{ac, ad + b}(t) = f_{1, 0}(t) \]
+        which means
+        \[ ac \cdot t + ad + b = t \]
+        now for $t = 0$ this implies that
+        \[ ad + b = 0 \implies d = -\frac{b}{a} \]
+        which is well defined as $a \in \mathbb R^\times$.
+        Then this implies that
+        \[ ac \cdot t = t \]
+        for all real $t$ and hence $c = \frac{1}{a}$.
+        Therefore $f_{a, b}$ has right inverse $f_{\frac{1}{a}, -\frac{b}{a}}$
+        and to check this is a left inverse we compute:
+        \[ f_{a, b} \circ f_{\frac{1}{a}, -\frac{b}{a}} = f_{a \cdot \frac{1}{a}, a \cdot \frac{-b}{a} + b} = f_{1, -b + b} = f_{1, 0} \]
+        thus $A$ is closed under left and right composition inverses and hence is a group with function composition as the group operation.
+
+        Now we define $A \curvearrowright \mathbb R$ by $f \cdot t = f(t)$.
+        To show that this is an action fix $t \in \mathbb R$. Then
+        \[ f_{1, 0} \cdot t = f_{1, 0}(t) = 1 \cdot t + 0 = t \]
+        and for $f_{a, b}, f_{c, d} \in A$
+        \[ (f_{a, b} \circ f_{c, d}) \cdot t = f_{ac, ad + b}(t) = act + ad + b = a(ct + d) + b = f_{a, b} \cdot (ct + d) = f_{a, b} \cdot (f_{c, d} \cdot t) \]
+        hence the above is actually an action. Now to show that this action is transitive
+        consider $s, t \in \mathbb R$ then take $f_{1, t - s} \in A$
+        \[ f_{1, t-s} \cdot s = 1 \cdot s + t - s = t \]
+        hence the action is transitive.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        First we show $\lambda$ is a homomorphism. Given $f_{a, b}, f_{c, d} \in A$:
+        \[ \lambda(f_{a, b} \circ f_{c, d}) = \lambda(f_{ac, ad + b}) = ac = \lambda(f_{a, b})\lambda(f_{c, d}) \]
+        hence $\lambda$ is a homomorphism.
+
+        Now to show $\lambda$ is surjective. Suppose $a \in \mathbb R^\times$. Then
+        \[ \lambda(f_{a, 0}) = a \]
+        hence $\lambda$ is surjective.
+
+        Finally I claim $\ker \lambda = T$. To show this, Note that $f_{a, b} \in \ker \lambda$
+        if and only if $\lambda(f_{a, b}) = 1$ which is equivalent to $a = 1$ and this is precisely what it means for $f_{a, b}$ to be an element of $T$.
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        That $T$ is normal in $A$ follows from the fact that it is the kernel of a homomorphism out of $A$.
+        Now I claim that given $f_{a, b} \in A$,
+        \[ f_{a, b}T = \{ f_{a, x} : x \in \mathbb R \} \]
+        and indeed since
+        \[ f_{a, b} \circ f_{c, d}^{-1}(t) = f_{a, b}(\frac{1}{c}t - \frac{d}{c}) = \frac{a}{c}t - \frac{ad}{c} + b \]
+        hence $f_{a, b}f_{c, d}^{-1} \in T$ if and only if $\frac{a}{c} = 1$ or $a = c$.
+        which proves the above claim.
+        Then to determine an explicit isomorphism from $\frac{A}{T} \cong \mathbb R$
+        we can simply consider $\lambda$ restricted to the quotient.
+        This follows as $\lambda$ is constant on each coset of $T$ in $A$
+        and therefore
+        \[ \lambda(f_{a, b}T) = a \]
+        is well defined, from part (b) it is clear that $\lambda$ is still a surjective homomorphism.
+        Then if $\lambda(f_{a, b}T) = 1$ this implies that $a = 1$ and hence $f_{a, b} \in T$
+        which is the identity coset for the group operation on $A/T$. Hence $\lambda$ restricts
+        to an isomorphism on the quotient
+    \end{proof}
+
+    \item[(d)]
+    \begin{proof}
+        Let $A \curvearrowright \mathbb R$ by evaluation.
+        To determine $A_0$ note that $f_{a, b} \cdot 0 = 0$ if and only if
+        $a \cdot 0 + b = 0$ which is equivalent to $b$ being 0. Hence
+        \[ A_0 = \{ f_{a, 0} : a \in \mathbb R^\times \} \]
+
+        The kernel of this action $K$ is in particular a subgroup of $A_0$
+        and therefore if $f_{a, b} \in K$ then $b = 0$. Then we must have
+        \[ f_{a, b} \cdot 1 = 1 \]
+        which means $a \cdot 1 + b = a = 1$ and $K = \{ f_{1, 0}\}$ so this action is faithful.
+
+        However, $A_0$ is not a normal subgroup of $A$. To show this consider $f_{2, 0} \in A_0$
+        and $f_{1, 1}$ and $f_{1, 1}^{-1} = f_{1, -1}$. Then we have
+        \begin{align*}
+            f_{1, 1} \circ f_{2, 0} \circ f_{1, 1}^{-1}(t) &= f_{1, 1} \circ f_{2, 0}(1\cdot t - 1) \\
+            &= f_{1, 1}(2t - 2) \\
+            &= 1\cdot (2t - 2) + 1 \\
+            &= 2t - 1
+        \end{align*}
+        and this is not an element of $A_0$ hence it is not invariant under conjugation
+        by elements in $A$ and thus cannot be normal.
+    \end{proof}
+
+    \item[(e)]
+    \begin{proof}
+        To determine $f_{a, b}A_0$ consider $f_{c, d}$ such that
+        \[ f_{a, b} \circ f^{-1}_{c, d} = f_{\frac{a}{c}, b - a\frac{d}{c}} \in A_0 \]
+        this holds precisely when
+        \[ b - a\frac{d}{c} = 0 \]
+        and therefore
+        \[ \frac{b}{a} = \frac{d}{c} \]
+        fixing $c$ this forces $d = c\frac{b}{a}$
+        and hence
+        \[ f_{a, b}A_0 = \{ f_{\alpha, \frac{b}{a}\alpha} : \alpha \in \mathbb R^\times \} \]
+        this determines a map:
+        \[ \varphi(f_{a, b}A_0) = \frac{b}{a} \in \mathbb R \]
+        and by the above observation this is well defined.
+        Furthermore given $c \in \mathbb R$
+        \[ \varphi(f_{1, c}A_0) = \frac{c}{1} = c \]
+        hence $\varphi$ is surjective and
+        \[ \varphi(f_{a, b}A_0) = 0\]
+        implies $\frac{b}{a} = 0$ and hence $b = 0$. which means $f_{a, b} \in A_0$.
+        Hence $\varphi$ is injective. Thus, $\varphi$ is a bijection.
+
+        To show that coset multiplication on $A/T$ is well defined it suffices to show that
+        given two cosets $f_{a, b}T$ and $f_{c, d}T$ given any element in the first
+        coset and any element in the second, their product will lie in the coset $(f_{a, b} \circ f_{c, d})T$.
+        Concretely let $f_{a, b'} \in f_{a, b}T$ and $f_{c, d'}T$ since all elements in the same coset of $T$ have the same multiplicative element.
+        That
+        their product lies in $(f_{a, b} \circ f_{c, d})T$ follows from the fact
+        that
+        \[ f_{a, b'}f_{c, d'} = f_{ac, ad' + b'} \in f_{ac, ad + b}T \]
+
+        Now the same does not hold for $f_{a, b}A_0$ and $f_{c, d}A_0$
+        as if $f_{a', b'} \in f_{a, b}A_0$ and $f_{c', d'} \in f_{c, d}A_0$
+        this means
+        \[ \frac{b'}{a'} = \frac{b}{a} \quad \frac{d'}{c'} = \frac{d}{c} \]
+        and we have
+        \[ f_{a', b'} \circ f_{c', d'} = f_{a'c', a'd' + b'} \]
+        \[ f_{a, b} \circ f_{c, d} = f_{ac, ad + b} \]
+        and for these to be in the same coset we would need
+        \[ \frac{ad + b}{ac} = \frac{a'd' + b'}{a'c'} \]
+        and taking $a = b = a' = b' = 1$ and $d = d' = 0$ with $c = 1$, $c' = 2$
+        this would imply
+        \[ \frac{1 \cdot 0 + 1}{1 \cdot 1} = 1 = \frac{1 \cdot 0 + 1}{1 \cdot 2} = \frac{1}{2} \]
+        which is clearly a contradiction, hence coset multiplication on $A/A_0$ is not well defined.
+    \end{proof}
+\end{enumerate}
+
+\end{document}
