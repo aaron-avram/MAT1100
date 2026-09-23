@@ -39,7 +39,7 @@
         &\text{since $g \in Z(G)$:} \\
         &= z^az^bgh \\
         &\text{since $h \in Z(G)$:} \\
-        &= z^{ab}hg \\
+        &= z^{a+b}hg \\
         &= z^bz^ahg \\
         &\text{since $h \in Z(G)$:} \\
         &= z^bhz^ag \\
@@ -55,7 +55,10 @@
         of $G$, hence $|c(x_i)| > 1$. By orbit-stabilizer:
         \[ |c(x_i)| = |G|/|G_{x_i}| = p^2/|G_{x_i} \]
         since $|c(x_i)| > 1$, $|G_{x_i}| < p^2$ which implies that $|G_{x_i}| \in \{ 1, p \}$.
-        Now if $|G_{x_i}| = 1$ then $|c(x_i)| = 1$ which is a contradiction as $|c(e)| = 1$.
+        Now if $|G_{x_i}| = 1$ then $|c(x_i)| = |G|$ which implies $e \in c(x_i)$.
+        Since conjugacy classes are disjoint or equal this forces $c(x_i) = c(e)$
+        which means $|c(x_i)| = 1$ contradicting $|c(x_i)| = |G| > 1 $.
+
         Thus $|G_{x_i}| = p$ and therefore $|c(x_i)| = p$. Now writing the class equation of $G$
         \[ |G| = |Z(G)| + \sum_{i = 1}^k |c(x_i)| \]
         then mod p, $|G| = 0$ and $|c(x_i)| = 0$ therefore this implies
