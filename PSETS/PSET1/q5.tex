@@ -50,7 +50,7 @@
         for all real $t$ and hence $c = \frac{1}{a}$.
         Therefore $f_{a, b}$ has right inverse $f_{\frac{1}{a}, -\frac{b}{a}}$
         and to check this is a left inverse we compute:
-        \[ f_{a, b} \circ f_{\frac{1}{a}, -\frac{b}{a}} = f_{a \cdot \frac{1}{a}, a \cdot \frac{-b}{a} + b} = f_{1, -b + b} = f_{1, 0} \]
+        \[ f_{\frac{1}{a}, -\frac{b}{a}} \circ f_{a, b} = f_{\frac{1}{a} \cdot a, \frac{1}{a}b - \frac{b}{a}} = f_{1, \frac{b}{a} - \frac{b}{a}} = f_{1, 0} \]
         thus $A$ is closed under left and right composition inverses and hence is a group with function composition as the group operation.
 
         Now we define $A \curvearrowright \mathbb R$ by $f \cdot t = f(t)$.
@@ -138,10 +138,20 @@
         and by the above observation this is well defined.
         Furthermore given $c \in \mathbb R$
         \[ \varphi(f_{1, c}A_0) = \frac{c}{1} = c \]
-        hence $\varphi$ is surjective and
-        \[ \varphi(f_{a, b}A_0) = 0\]
-        implies $\frac{b}{a} = 0$ and hence $b = 0$. which means $f_{a, b} \in A_0$.
-        Hence $\varphi$ is injective. Thus, $\varphi$ is a bijection.
+        hence $\varphi$ is surjective and to show that $\varphi$ is injective,
+        note that
+        \[ f_{a, b}A_0 = \{ f_{\alpha, \frac{b}{a}\alpha} : \alpha \in \mathbb R^\times \} \]
+        hence $f_{a, b}A_0 = f_{c, d}A_0$ if and only if $\frac{b}{a} = \frac{d}{c}$. Each coset
+        contains exactly one function of the form $x + \ell$, by taking $\alpha = 1$ in the above parametrizations.
+        Denote these by $f_{1, k}$ and $f_{1, k'}$ respectively
+        and therefore equality of the cosets holds
+        if and only if $k = k'$ which is equivalent to having $\frac{b}{a} = \frac{d}{c}$ above.
+
+        but $\varphi(f_{a, b}A_0 ) = \frac{b}{a}$ and $\varphi(f_{c, d}A_0) = \frac{d}{c}$ hence
+        the above becomes:
+        \[  f_{a, b}A_0 = f_{c, d}A_0 \iff \varphi(f_{a, b}A_0) = \varphi(f_{c, d}A_0) \] 
+        which is precisely what it means for $\varphi$ to be injective.
+        Thus, $\varphi$ is a bijection.
 
         To show that coset multiplication on $A/T$ is well defined it suffices to show that
         given two cosets $f_{a, b}T$ and $f_{c, d}T$ given any element in the first
