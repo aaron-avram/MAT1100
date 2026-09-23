@@ -27,9 +27,13 @@
 \begin{enumerate}
     \item[(a)]
     \begin{proof}
+        To show $H$ is not normal in $G$, consider $r^{-1} \in G$ and $rs \in H$
+        then
+        \[ r^{-1}(rs)r = sr = r^{-1}s \]
+        which is not in $H$, hence $H$ is not invariant under conjugation meaning it is not normal.
         To show that 
         \[ (aH)(bH) = (ab)H \]
-        it suffices to show that given $a', b'$, other representatives of $aH$ and $bH$
+        is not a well defined operation, it suffices to show that given $a', b'$, other representatives of $aH$ and $bH$
         
         \[ (a'b')H \neq (ab)H \]
         to  do this take $a = b = s$ and $a' = b' = s \cdot rs$ which is also a representative of $sH$
@@ -77,6 +81,12 @@
         \end{align*}
         hence all elements of $D_8/N$ have order at most 2 and thus the group cannot be cyclic
         as it has order 4.
+
+        Now to prove that $D_8/N$ is abelian since every element of $D_8/N$ squares to the identity, it suffices to show that for any group $G$ if
+        $x^2 = e$ for all $x \in G$ then $G$ is abelian. To do this, note that $x^2 = e$
+        is equivalent to $x = x^{-1}$ and therefore if $a, b \in G$
+        \[ ab = a^{-1}b^{-1} = (ba)^{-1} = ba \]
+        hence $G$ is abelian and therefore $D_8/N$ is abelian.
     \end{proof}
 \end{enumerate}
 

@@ -55,7 +55,7 @@ Let $\rho: G \to \operatorname{Sym}(X)$ denote the permutation representation of
         \end{enumerate}
         If $G \curvearrowright X$ is transitive then given $x \in X$
         \[ \mathcal O_x = \{ g \cdot x : g \in G \} = X \]
-        and by $(a)$, $\mathcal O_{gx} = g\mathcal O_x g^{-1}$. Thus
+        and by $(a)$, $G_{gx} = gG_x g^{-1}$. Thus
         \[ \ker \rho = \bigcap_{x \in X}G_x = \bigcap_{g \in G}G_{g \cdot x} = \bigcap_{g \in G}gG_xg^{-1} \]
     \end{proof}
 
@@ -74,7 +74,7 @@ Let $\rho: G \to \operatorname{Sym}(X)$ denote the permutation representation of
         \[ g^{-1}h \cdot x = x \]
         hence $g^{-1}h \in G_x$. Now given $a \in G_x$, $gag^{-1} = a$
         as $G$ is abelian hence $gG_xg^{-1} = G_x$ for all $g \in G$. Since $G \curvearrowright X$ is transitive
-        \[ \ker \rho = \bigcup_{g \in G} gG_xg^{-1} = \bigcap_{g \in G}G_x = G_x \]
+        \[ \ker \rho = \bigcap_{g \in G} gG_xg^{-1} = \bigcap_{g \in G}G_x = G_x \]
         hence $g^{-1}h \in G_x = \ker \rho$ and since $\rho$ is faithful this implies that
         $g^{-1}h = e$ and $g = h$.
 
