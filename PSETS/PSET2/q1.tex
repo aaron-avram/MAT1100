@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 2}
+\author{Aaron Avram}
+\date{October 5 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 1}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Suppose $K, N \lhd G$ with $K \leq N$.
+
+        First we show that
+        \[ N/K \lhd G/K \]
+        suppose $g \in G$ and $n \in N$ then
+        \[ [g]_K[n]_K[g^{-1}]_K = [gng^{-1}]_K \in N/K \]
+        where final part follows from the fact that $N \lhd G$ so
+        $gng^{-1} \in N$.
+
+        Next, to construct a isomorphism from
+        \[ (G/K)/(N/K) \cong G/N \]
+        it suffices to find a surjection
+        \[ \varphi: G/K \to G/N \]
+        whose kernel is $N/K$ and factor this map through the quotient by its kernel.
+
+        Concretely, define
+        \[ \varphi: [g]_K \to [g]_N \]
+        first to see that $\varphi$ is well defined: suppose $g, h \in G$
+        such that $[g]_K = [h]_K$ which means that $g^{-1}h \in K \leq N$.
+        Therefore
+        \[ [g]_N = [h]_N \]
+        hence $\varphi$ is well defined.
+
+        That $\varphi$ is surjective is clear, as if $g \in G$
+        \[ \varphi([g]_K) = [g]_N \]
+        by definition.
+
+        Next, we show that $\ker \varphi = N/K$. It is clear
+        that $N/K \subseteq \ker \varphi$. As if $n \in N$, $[n]_N = e$
+        and $\varphi([n]_K) = e$. Next if $[g]_K \in \ker \varphi$
+        then
+        \[ [g]_N = e \]
+        and hence $g \in N$ hence $[g]_K \in N/K$ as required.
+        
+        Now by the first isomorphism theorem
+        \[ (G/K) / (N/K) \cong (G/N) \]
+        with an explicit isomorphism given by
+        \[ \hat{\varphi}: [[g]_K]_{N/K} \mapsto \varphi([g]_K) = [g]_N \]
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        Suppose $K = \{ e, (12)(34), (13)(24), (14)(23) \} \leq S_4$.
+        This is a normal subgroup as conjugation preserves cycle type
+        and $K$ is the union of the conjugacy classes $(1)$ and $(2, 2)$.
+
+        Now $|S_4| = 24$ and $|K| = 4$. By Lagrange's theorem, if $H$
+        is a normal subgroup of $S_4$ containing $K$ its order must be divisible by 4
+        and divide 24. Hence $|H| \in \{ 4, 8, 12, 24 \}$. Now since $H$ is normal it is the union
+        of conjugacy classes in $S_4$. the conjugacy classes of $S_4$
+        correspond to the cycle types $(1), (2), (2, 2), (3), (4)$ with sizes
+        $1, 6, 3, 8, 6$. $K$ is already the union of $(1)$ and $(2, 2)$
+        so by inspection it is clear that either $|H| = 4$ in which case $H = K$,
+        or $|H| = 12$ in which case $H = A_4$ or $|H| = 24$ in which case $H = S_4$.
+        
+        If $H = K$ then $H/K \cong \{ e \}$.
+
+        Else, if $H = A_4$ then $|A_4/K| = 3$ hence by Lagrange's theorem
+        \[ A_4/K \cong \mathbb Z / 3\mathbb Z \]
+
+        Finally if $H = S_4$ then we can use the action defined in lecture
+        by $S_4 \curvearrowright \Delta$ where
+        \[ \Delta = \{ P_1, P_2, P_3 \} \]
+        with
+        \begin{align*}
+            P_1 &= \{ \{ 1, 2 \}, \{ 3, 4 \} \} \\
+            P_2 &= \{ \{ 1, 3 \}, \{ 2, 4 \} \} \\
+            P_3 &= \{ \{ 1, 4 \}, \{ 2, 3 \} \} \\
+        \end{align*}
+        and $S_4$ permutes the individual coordinates of each $P_i$.
+        In lecture we showed that if $\pi: S_4 \to S_\Delta \cong S_3$
+        is the permutation representation of this action, $\ker \pi = K$
+        and so $|S_4/ K| = 6$ and since $|S_3| = 6$ this implies that $\pi$ is surjective
+        and hence
+        \[ S_4/K \cong S_3 \]
+
+        Now to construct an explicit isomorphism
+        \[ (S_4/K)/(A_4/K) \cong \{ -1, 1 \} \]
+        we use question part (a) and map
+        \[ \varphi: (S_4/K)/(A_4/K) \to S_4/A_4 \]
+        given by
+        \[ \varphi([[\sigma]_K]_{A_4/K}) = [\sigma]_{A_4} \]
+        but since
+        \[ S_4/A_4 \cong \{ -1, 1 \} \]
+        via the sign map we can define an isomorphism
+        \[ \psi: (S_4/K)/(A_4/K) \to \{ -1, 1 \} \]
+        by
+        \[ \psi([[\sigma]_K]_{A_4/K}) = \operatorname{sgn}(\sigma) \]
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        Take $L = \{ e, (12)(34) \} \leq K$ which is normal in $K$
+        but not normal in $G$ as conjugating by $(23)$ we get $(13)(24)$
+        which is not in $L$. This means that $G/L$ is not a group
+        and so the statement
+        \[ (G/L)/(K/L) \cong G/K \]
+        is not well defined as the set being quotiented is not a group.
+    \end{proof}
+\end{enumerate}
+
+\end{document}
