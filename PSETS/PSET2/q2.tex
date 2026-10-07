@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 2}
+\author{Aaron Avram}
+\date{October 5 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 2}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        We begin with a couple of cases.
+
+        \begin{enumerate}
+            \item[:$n = 1$:]
+            $S_1 = \{ e \}$ and so its only normal subgroup is itself.
+
+            \item[$n = 2$:]
+            $S_2 \cong \mathbb Z/2\mathbb Z$ whose only normal subgroups are itself and the trivial group.
+            
+            \item[$n = 3$:]
+            $|S_3| = 6$ so by Lagrange's theorem its subgroups must have
+            orders $1, 2, 3$ or $6$ now none of its order 2 subgroups are normal as these are generated
+            by a single tranposition and hence do not contain the entire conjugacy class $(2)$.
+            However any subgroup of order 3 is $A_3$ which is isomorphic to $\mathbb Z/3\mathbb Z$ and is normal
+            since it has index 2. $S_3/A_3 \cong \mathbb Z/2\mathbb Z$. $S_3$ also has the trivial group and itself as normal subgroups.
+            
+            \item[$n = 4$:]
+            The conjugacy classes of $S_4$ are $(1), (2), (2, 2), (3), (4)$
+            with sizes $1, 6, 3, 8, 6$ and a normal subgroup of $S_4$ must have order dividing $24$
+            and be a union of conjugacy classes. Since the largest odd number dividing 24 is 3,
+            if $N$ is a normal subgroup of $S_4$ it must contain the conjugacy classes $(1), (2, 2)$
+            and hence contain $K = \{ e, (12)(34), (13)(24), (14)(23) \}$. Hence all such $N$ were classified in question 1
+            as $\{ e \}, K, A_4, S_4$ with quotients $S_4, S_3, \mathbb Z/2\mathbb Z, \{ e \}$.
+
+        \end{enumerate}
+        If $n \geq 5$, $A_5$ is simple which greatly reduces the problem.
+        Suppose $N \lhd S_n$ then $N \cap A_n \lhd S_n$ and so $N \cap A_n \lhd A_n$.
+        Since $A_n$ is simple this implies that either $N \cap A_n = \{ e \}$ or $N \supseteq A_n$.
+
+        Case 1. $N \supseteq A_n$. Then $[S_n : N] \leq [S_n: A_n] = 2$ and hence $N = A_n$ or $N = S_n$.
+
+        Case 2. $N \cap A_n = \{ e \}$, now if $\sigma \in S_n$ then
+        \[ \operatorname{sgn}(\sigma^2) = \operatorname{sgn}(\sigma)^2 = 1 \]
+        hence $\sigma^2 \in A_n$. Therefore every element of $N$ can have order at most $2$.
+
+        Now since $N$ is normal it is the union of conjugacy classes in $S_n$
+        hence it is the union of conjugacy classes of the form $(2, \ldots, 2)$ k times
+        for $k \leq n/2$. First note that if $N$ contains the conjugacy class for $k = 1$
+        then $N$ contains all tranpositions and is therefore all of $S_n$.
+
+        First suppose $N$ contains the conjugacy class for $2 \leq k < n/2$.
+        Then $2k < n$. Now pick $(i, j) \in S_n$ and pick $(i_1, j_1) \ldots (i_{k-1}, j_{k-1})$
+        such that all of these transpositions are disjoint and do not contain either $i$ or $j$.
+        Then since $2k < n$ there exists $\ell \in \{ 1, \ldots, n \}$ such that $\ell \neq i, j$
+        and $\ell$ is not contained in any of the above transpositions. Then
+        \[ (i_1, j_1) \ldots (i_{k-1}, j_{k-1})(k, j), (i_1, j_1) \ldots (i_{k-1}, j_{k-1})(i, k) \in N \]
+        and their product is $(i, j)$ therefore $N$ contains all of the transpositions
+        and is hence of all of $S_n$.
+
+        Next suppose $N$ contains the conjugacy class for $k = n/2$. assuming $n$ is even.
+        Pick $i, j, r, s \{ 1, \ldots, n \}$ all distinct as $n > 4$. We have $k \geq 0$,
+        so let $(i_1 j_1), \ldots, (i_{k-2}j_{k-2}) \in S_n$ be disjoint transpositions such that
+        none of them contain any of $i, j, r, s$. Then
+        \[ (i_1 j_1)\ldots(i_{k-2}j_{k-2})(ir)(sj), (i_1 j_1)\ldots(i_{k-2}j_{k-2})(is)(rj) \in N \]
+        and their product is
+        \[ (ij)(rs) \]
+        hence $N$ contains the conjugacy class $(2, 2)$ and by the above case this implies that $N = S_n$.
+        Therefore $N = \{ e \}$ if $N \cap A_n = \{ e \}$ and the only normal subgroups of $S_n$
+        are $\{ e \}, A_n, S_n$ with quotients $S_n, \mathbb Z/2\mathbb Z, \{ e \}$.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+
+        Let $B$ be an abelian group. The zero map is always a homorphism $S_n$ to $B$
+        so it is not stated. If $f: S_n \to B$ is a homorphism then
+        \[ S_n / \ker f \cong \operatorname{im} f \leq B \]
+        hence it suffices to classify all subgroups of $B$ are isomorphic to a quotient of $S_n$
+        and for this it is clear that we need only consider the quotients of $S_n$ which are abelian
+        and for $n \geq 2$ the only non trivial such quotient is $S_n/A_n \cong \mathbb Z/2\mathbb Z$.
+        \begin{enumerate}
+            \item[$n = 1$] The only homorphism out of the trivial group into another group is the zero map.
+            \item[$n = 2$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
+            then there is a map: $S_2 \to B$ given by $(12) \to x$ and such a map can be constructed for any element
+            of $B$ with order 2. These are clearly all of the maps from $S_2$ to $B$.
+
+            \item[$n = 3$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
+            then there is a map: $S_3 \to B$ given by $\sigma \to x$ for $\sigma \in S_3 \setminus A_3$ and $\sigma \to e$ for $\sigma \in A_3$. 
+            Such a map can be constructed for any element $x \in B$ of order 2. Since $S_3$ has no abelian quotients
+            other than $\{ e \}$ and $\mathbb Z / 2\mathbb Z$ these are all of the possible maps from $S_3$ into $B$
+            (as $S_3$ is non abelian).
+
+            \item[$n = 4$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
+            then there is a map: $S_4 \to B$ given by $\sigma \to x$ for $\sigma \in S_4 \setminus A_4$ and $\sigma \to e$ for $\sigma \in A_4$. 
+            Such a map can be constructed for any element $x \in B$ of order 2. Since $S_3$ has no abelian quotients
+            other than $\{ e \}$ and $\mathbb Z / 2\mathbb Z$ these are all of the possible maps from $S_4$ into $B$
+            (as $S_4$ is non abelian and $S_4/K \cong S_3$ is non abelian).
+
+            \item[$n \geq 5$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
+            then there is a map: $S_n \to B$ given by $\sigma \to x$ for $\sigma \in S_n \setminus A_n$ and $\sigma \to e$ for $\sigma \in A_n$. 
+            Such a map can be constructed for any element $x \in B$ of order 2. Since $S_n$ has no abelian quotients
+            other than $\{ e \}$ and $\mathbb Z / 2\mathbb Z$ these are all of the possible maps from $S_n$ into $B$
+            as $S_n$ is non abelian.
+        \end{enumerate}
+    \end{proof}
+\end{enumerate}
+
+\end{document}
