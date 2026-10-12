@@ -28,32 +28,7 @@
 \begin{enumerate}
     \item[(a)]
     \begin{proof}
-        We begin with a couple of cases.
-
-        \begin{enumerate}
-            \item[:$n = 1$:]
-            $S_1 = \{ e \}$ and so its only normal subgroup is itself.
-
-            \item[$n = 2$:]
-            $S_2 \cong \mathbb Z/2\mathbb Z$ whose only normal subgroups are itself and the trivial group.
-            
-            \item[$n = 3$:]
-            $|S_3| = 6$ so by Lagrange's theorem its subgroups must have
-            orders $1, 2, 3$ or $6$ now none of its order 2 subgroups are normal as these are generated
-            by a single tranposition and hence do not contain the entire conjugacy class $(2)$.
-            However any subgroup of order 3 is $A_3$ which is isomorphic to $\mathbb Z/3\mathbb Z$ and is normal
-            since it has index 2. $S_3/A_3 \cong \mathbb Z/2\mathbb Z$. $S_3$ also has the trivial group and itself as normal subgroups.
-            
-            \item[$n = 4$:]
-            The conjugacy classes of $S_4$ are $(1), (2), (2, 2), (3), (4)$
-            with sizes $1, 6, 3, 8, 6$ and a normal subgroup of $S_4$ must have order dividing $24$
-            and be a union of conjugacy classes. Since the largest odd number dividing 24 is 3,
-            if $N$ is a normal subgroup of $S_4$ it must contain the conjugacy classes $(1), (2, 2)$
-            and hence contain $K = \{ e, (12)(34), (13)(24), (14)(23) \}$. Hence all such $N$ were classified in question 1
-            as $\{ e \}, K, A_4, S_4$ with quotients $S_4, S_3, \mathbb Z/2\mathbb Z, \{ e \}$.
-
-        \end{enumerate}
-        If $n \geq 5$, $A_5$ is simple which greatly reduces the problem.
+        If $n \geq 5$, $A_5$ is simple.
         Suppose $N \lhd S_n$ then $N \cap A_n \lhd S_n$ and so $N \cap A_n \lhd A_n$.
         Since $A_n$ is simple this implies that either $N \cap A_n = \{ e \}$ or $N \supseteq A_n$.
 
@@ -91,37 +66,13 @@
 
     \item[(b)]
     \begin{proof}
-
-        Let $B$ be an abelian group. The zero map is always a homorphism $S_n$ to $B$
-        so it is not stated. If $f: S_n \to B$ is a homorphism then
-        \[ S_n / \ker f \cong \operatorname{im} f \leq B \]
-        hence it suffices to classify all subgroups of $B$ are isomorphic to a quotient of $S_n$
-        and for this it is clear that we need only consider the quotients of $S_n$ which are abelian
-        and for $n \geq 2$ the only non trivial such quotient is $S_n/A_n \cong \mathbb Z/2\mathbb Z$.
-        \begin{enumerate}
-            \item[$n = 1$] The only homorphism out of the trivial group into another group is the zero map.
-            \item[$n = 2$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
-            then there is a map: $S_2 \to B$ given by $(12) \to x$ and such a map can be constructed for any element
-            of $B$ with order 2. These are clearly all of the maps from $S_2$ to $B$.
-
-            \item[$n = 3$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
-            then there is a map: $S_3 \to B$ given by $\sigma \to x$ for $\sigma \in S_3 \setminus A_3$ and $\sigma \to e$ for $\sigma \in A_3$. 
-            Such a map can be constructed for any element $x \in B$ of order 2. Since $S_3$ has no abelian quotients
-            other than $\{ e \}$ and $\mathbb Z / 2\mathbb Z$ these are all of the possible maps from $S_3$ into $B$
-            (as $S_3$ is non abelian).
-
-            \item[$n = 4$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
-            then there is a map: $S_4 \to B$ given by $\sigma \to x$ for $\sigma \in S_4 \setminus A_4$ and $\sigma \to e$ for $\sigma \in A_4$. 
-            Such a map can be constructed for any element $x \in B$ of order 2. Since $S_3$ has no abelian quotients
-            other than $\{ e \}$ and $\mathbb Z / 2\mathbb Z$ these are all of the possible maps from $S_4$ into $B$
-            (as $S_4$ is non abelian and $S_4/K \cong S_3$ is non abelian).
-
-            \item[$n \geq 5$] If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
-            then there is a map: $S_n \to B$ given by $\sigma \to x$ for $\sigma \in S_n \setminus A_n$ and $\sigma \to e$ for $\sigma \in A_n$. 
-            Such a map can be constructed for any element $x \in B$ of order 2. Since $S_n$ has no abelian quotients
-            other than $\{ e \}$ and $\mathbb Z / 2\mathbb Z$ these are all of the possible maps from $S_n$ into $B$
-            as $S_n$ is non abelian.
-        \end{enumerate}
+         If $2 \mid |B|$ then by Cauchy's theorem $B$ has an element $x$ of order 2
+        then there is a map: $S_n \to B$ given by $\sigma \to x$ for $\sigma \in S_n \setminus A_n$ and $\sigma \to e$ for $\sigma \in A_n$. 
+        Such a map can be constructed for any element $x \in B$ of order 2. Since $S_n$ has no abelian quotients
+        other than $\{ e \}$ and $\mathbb Z / 2\mathbb Z$ these maps and the zero map are all of the possible maps from $S_n$ into $B$.
+        This follows as if $\varphi: S_n \to B$ is a homorphism then
+        \[ S_n/\ker \varphi \cong \operatorname{im} B \]
+        hence $S_n /\ker \varphi$ must be abelian.
     \end{proof}
 \end{enumerate}
 
