@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 2}
+\author{Aaron Avram}
+\date{October 12 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 5}
+\end{align*}
+
+
+Suppose that $|G| = p^\alpha m$ with $p \nmid m$ and
+$|N| = p^\beta n$ with $p \nmid n$ then it follows that $\beta \leq \alpha$
+and $n \mid m$. 
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        $P \cap N \leq P$ so it is a p-group by Lagrange's theorem.
+        and suppose it has order $p^a$ with $a \leq \beta$
+
+        Now $N$ is normal so $PN \leq G$ and
+        \[ |PN| = \frac{|P||N|}{|P \cap N|} = p^{\alpha + \beta - a}n \]
+        now $|PN| \mid |G| = p^\alpha m$ by Lagrange's theorem and $\gcd(p, m) = 1$ 
+        and $p$ is prime which implies that
+        \[ p^{\alpha + \beta - a} \mid p^\alpha \]
+        and hence $\beta = a$. Hence $P \cap N$ is a Sylow p-subgroup of $N$.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        Suppose $Q$ is a Sylow p-subgroup of $G/N$.
+        $|G/N| = |G|/|N| = p^{\alpha - \beta}(\frac{m}{n})$
+        and so
+        \[ |\pi^{-1}(Q)| = |Q||N| = p^{\alpha - \beta}p^\beta n = p^\alpha n \]
+        therefore a Sylow p-subgroup $P$ of $\pi^{-1}(Q)$ is a Sylow-subgroup of $G$.
+        $PN$ is a subgroup of $G$ with order
+        \[ |PN| = \frac{|P||N|}{|P \cap N |} = \frac{p^{\alpha + \beta}n}{p^\beta} = p^\alpha n \]
+        where $|P \cap N| = p^\beta$ as it is a Sylow p-subgroup of $N$ by (a).
+
+
+        Clearly
+        \[ \pi(P) = \frac{PN}{N} \supseteq Q \]
+        and moreover
+        \[ |\pi(P)| = \frac{|PN|}{|N|} = p^{\alpha - \beta}n = |Q| \]
+        therefore we have equality above. 
+        Now observe that since $N$ is normal $N_G(P) \leq N_G(PN)$. This follows, as if $g \in N_G(P)$
+        \[ gPNg^{-1} = gPg^{-1}gNg^{-1} = PN \]
+        therefore
+        \[ [N_G(PN) : N_G(P)] \in \mathbb N \]
+        now $[g] \in N_{G/N}(Q)$ if and only if
+        \[ [g]Q[g^{-1}] = Q \]
+        but pulling back by $\pi$ this is equivalent to
+        \[ gPNg^{-1} = PN \]
+        i.e.
+        \[ \pi^{-1}\Big(N_{G/N}(Q)\Big) = N_G(PN) \]
+        and therefore
+        \[ |N_{G/N}(Q)| = [N_G(PN) : N] \]
+        putting this together
+        \begin{align*}
+        n_p(G/N) &= [G/N : N_{G/N}(Q)] \\
+        &= \frac{[G:N]}{[N_G(PN) : N]} \\
+        &= [G : N_G(PN)] \\
+        &= \frac{[G : N_G(P)]}{[N_G(PN) : N_G(P)]} \\
+        &= \frac{n_p(G)}{[N_G(PN) : N_G(P)]} \\
+        \end{align*}
+        and hence $n_{G/N}(Q) \mid n_{G}(P)$ as $[N_G(PN) : N_G(P)] \in \mathbb N$.
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        Suppose $|G| = 72$ and $|N| = 9$. Then since $72 = 8 \cdot 9$
+        Sylow's theorem implies that there exists $H \leq G$ of order 8
+        and let $n_8$ be the number of such subgroups.
+        
+        Moreover by Lagrange's theorem $N \cap H$ as their orders are relatively prime.
+        Thus
+        \[ |NH| = \frac{|N||H|}{|N \cap H|} = \frac{9 \cdot 8}{1} = 72 \]
+        and therefore $NH = G$. Moreover the second isomorphism theorem implies that
+        \[ G/N = NH/N \cong H/H\cap N = H/\{ e \} \cong H \]
+        now by Sylow's theorem
+        \[ n_8 = [G : N_G(H)] \]
+        and moreover we also have that $N_N(H) = N_G(H) \cap N$. Consider
+        $N \curvearrowright \operatorname{Syl}_8(G)$ via conjugation. To show any two
+        order 8 subgroups of $G$ are conjugate by an element of $N$, it suffices to show that the above action
+        is transitive. Now
+        \[ |\operatorname{Syl}_8(G)| = n_8 = [G : N_G(H)] \]
+        and the size of the orbit of $H$ under the above action is
+        \[ |\mathcal O_H| = [N : N_N(H)] = [N : N_G(H) \cap N] \]
+        now since $G = HN$ and $H \leq N_G(H)$
+        \[ N_G(H)N \geq HN \]
+        and hence $N_G(H)N = G$ so
+        \[ |G| = |N_G(H)N| = \frac{|N_G(H)||N|}{|N_G(H) \cap N|} \]
+        and hence
+        \[ |\operatorname{Syl}_8(G)| = \frac{|G|}{|N_G(H)|} = \frac{|N|}{|N_G(H) \cap N|} = |\mathcal O_H| \]
+        so the above action is transitive. Therefore any two subgroups of order $8$
+        are conjugate by an element in $N$.
+    \end{proof}
+\end{enumerate}
+
+\end{document}

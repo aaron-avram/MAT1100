@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 2}
+\author{Aaron Avram}
+\date{October 12 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 4}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        $|G| = 56 = 7 \cdot 8$ hence by Sylow's theorem
+        \[ n_7 = 1 \mod 7  \quad n_7 \mid 8 \]
+        hence $n_7$ = 1 or 8
+        and
+        \[ n_8 = 1 \mod 2 \quad n_8 \mid 7 \]
+        hence $n_8$ = 1 or 7.
+
+        Now if $n_7 = 1$ then the unique Sylow 8-subgroup of $G$
+        must be normal similarly if $n_8 = 1$ Hence it suffices to show that it is not possible
+        for $n_7 = 8$ and $n_8 = 1$. To prove this, suppose it holds for contradiction.
+        Groups of order 7 are cyclic and any non-identity element generates the group.
+        Hence if $P, Q$ are Sylow 7-subgroups
+        they are either equal or intersect trivially. Thus the 8 Sylow 7-subgroups
+        of $G$ contribute $6 \cdot 8 = 48$ distinct elements of order 7.
+
+        Now if $H_1, \ldots, H_7$ are the seven distinct Sylow 8-subgroups of $G$.
+        Pick a non-identity element $x_1$ in $H_1$ then since $H_2$ has order 8 there exists
+        a non-identity element $x_2 \in H_2$ not equal to $x_1$ and iterating this process
+        we find non-identity $x_i \in H_i$ such that $x_1, \ldots x_7$ are distinct.
+        Now since not all of the $H_i$ are equal $|\bigcup_{i}H_i| > 8$ hence there exists a non-identity $x_8$
+        in some $H_i$ not equal to any of the $x_i$. 
+        
+        These are 8 even order elements in $G$ which are distinct from the 48 elements of order 7 above.
+        However adding the identity this implies that $|G| \geq 1 + 8 + 48 = 57$ which contradicts the fact
+        that $G$ has order 56.
+
+        Hence $G$ must have a normal subgroup.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        Suppose $G$ has order $2^kp$ for $p$ an odd prime and $k$ a natural number such that
+        $2^kp > p!$. Since $2 \nmid p$ Sylow's theorem guarantees the existence of $H \leq G$
+        such that $|H| = 2^k$ and hence $[G: H] = p$.
+
+        Now let $G$ act on the set of cosets of $H$ in $G$ by left multiplication. Suppose $\pi: G \to S_{G/H} = S_p$ is the permutation representation
+        of this action. First since $p > 1$, $G \setminus H \neq \varnothing$
+        and hence if $g \in G \setminus H$, $gH \neq H$ and so this action is not trivial,
+        i.e. $\pi$ is not the zero map and hence $\ker \pi \neq G$.
+
+        Now to show that $G$ cannot be simple it suffices to show that $\pi$ is not injective
+        as then $\ker \pi$ is a non-trivial proper normal subgroup of $G$. This follows as
+        $|S_p| = p!$ and $|G| = 2^kp > p!$ and if $\pi$ were injective this would imply that
+        \[ |G| \leq |S_p| \]
+    \end{proof}
+\end{enumerate}
+
+\end{document}
