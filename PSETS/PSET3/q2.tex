@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 3}
+\author{Aaron Avram}
+\date{November 1 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 2}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Let $P \curvearrowright N$ via conjugation, since $N \neq \{ e \}$ it is a p-group
+        and thus the set of fixed points $N^P = 0 \mod p$ and since $e \in N^P$ this implies that
+        $N^P \neq \{ e \}$. Now
+        \[ N^P = \{ x \in N : \forall p \in P \text{ s.t. } pxp^{-1} = x \} = Z(P) \cap N \]
+        hence $Z(P) \cap N \neq \{ e \}$.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        We proceed by induction. Namely we prove the following statement by induction on $j \in \mathbb N \cup \{ 0 \}$:
+        If $P$ is a p-group such that $N \leq P$ and $p^j \mid |N|$ then $N$ has a normal subgroup of order $p^{j-1}$
+        that is also normal in $P$.
+
+        The base case is trivial as $p^0 = 1$ and the trivial subgroup $\{ e \}$ has the required properties.
+
+        Now for the inductive step, suppose that the statement holds for some $j \in \mathbb N \cup \{ 0 \}$.
+        Now consider a p-group $P$ and a normal subgroup $N$ such that $p^{j+1} \mid |N|$. Since $j \geq 0$
+        this implies that $N \neq \{e \}$ and by $(a)$ this implies that $Z(P) \cap N$ is a non-trivial p-group.
+        Thus by Cauchy's theorem there is $x \in Z(P) \cap N$ of order $p$. Now $\langle x \rangle \lhd N, P$.
+        Moreover $P/\langle x \rangle$ is a p-group with normal subgroup $N/\langle x \rangle$ and $p^j \mid |N/\langle x \rangle|$.
+        Thus by the inductive hypothesis $N/\langle x \rangle$ has a normal subgroup $\overline{H}$ of order $p^{j}$
+        that is also normal in $P/\langle x \rangle$. By the correspondence isomorphism theorem,
+        if $\pi$ is the natural projection for $P \to P/\langle x\rangle$ then $H = \pi^{-1}(\overline{H})$
+        is a normal subgroup of $N$ of order $p^{j+1}$ which is also normal in $P$ as required.
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        Suppose $G$ is a group, then for any prime $p$ applying $(b)$ to a Sylow p-subgroup
+        of $G$ shows that for any $p^j \mid |G|$, $G$ has a subgroup of order $p^j$. However,
+        such a subgroup need not be normal in $G$. For example take $S_3$ and the 2 element subgroup
+        $\{ e, (12) \}$. This is not normal as
+        \[ (23)(12)(23)^{-1} = (13) \notin \{ e, (12) \} \]
+    \end{proof}
+
+    \item[(d)]
+    \begin{proof}
+        Given a p-group $P$ with $|P| = p^a$, we prove the following stronger statement by induction on $i \in \mathbb N$:
+        \[ |Z_i(P)| > p^{i-1} \]
+        and when $i = a$ this implies that $|Z_a(P)| > p^{a-1}$ and hence $|Z_a(P)| = p^a$ by Lagrange's theorem
+        which is equivalent to $Z_a(P) = P$ as required.
+
+        For the base case $i = 1$: $|Z_1(P)| = |Z(P)| > p^0 = 1$ as a p-group has a non-trivial center.
+
+        Now suppose the statement holds for some $i \in \{ 0, \ldots, a-1\}$. Then
+        \[ Z_{i+1}(P) = \pi_i^{-1}(Z(P/Z_i(P))) \]
+        hence
+        \[ |Z_{i+1}(P)| = |Z_i(P)||Z(P/Z_i(P))| \]
+
+        now case 1 is that $Z(P/Z_i(P)) = \{ e \}$ and this implies that $P/Z_i(P) = \{ e \}$
+        as non-trivial p-groups have non-trivial centers. Thus $P = Z_i(P)$ and then clearly
+        $Z_{i+1}(P) = P$ which clearly suffices.
+
+        Otherwise, $Z(P/Z_i(P)) \neq \{ e \}$ and hence $|Z(P/Z_i(P))| \geq p$ and thus
+        \[ |Z_{i+1}(P)| = |Z_i(P)||Z(P/Z_i(P))| > p^ip = p^{i+1} \]
+        as required.
+    \end{proof}
+
+    \item[(e)]
+    \begin{proof}
+        To prove that a nilpotent group $G$ is solvable it suffices to show that
+        \[ Z_{i+1}(G)/Z_{i}(G) \]
+        is abelian then reversing the upper central series is clearly a solvable series for $G$.
+        Now
+        \[ Z_{i+1}(G) = \pi_i^{-1}(Z(G/Z_{i}(G))) \]
+        so by definition
+        \[ Z_{i+1}(G)/Z_i(G) = Z(G/Z_i(G)) \]
+        hence $Z_{i+1}(G)/Z_i(G)$ is abelian and $G$ is solvable.
+
+        For an example of a group that is solvable but not nilpotent consider $S_3$.
+
+        Since $A_3 \cong C_3$, $S_3 \rhd A_3 \rhd \{e\}$ is a solvable series for $S_3$.
+        However $Z(S_3) = \{e \}$ and thus $Z_1(S_3) = Z(S_3) = \{ e \}$ meaning
+        that $Z_i(S_3) = \{e \}$ for all $i \in \mathbb N$. Hence $S_3$ is not nilpotent.
+    \end{proof}
+\end{enumerate}
+
+\end{document}
