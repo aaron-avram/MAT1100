@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 3}
+\author{Aaron Avram}
+\date{November 1 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 1}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Suppose that $G$ is a group of order 12 such that $n_3(G) = 4$.
+        By Sylow's theorem $G$ has a Sylow 2-subgroup, to show that it is normal
+        it suffices to show that $n_4(G) = 1$. Now $n_4(G) \mid 3$ and $n_4(G) = 1 \mod 2$.
+
+        Suppose for contradiction that $G$ has no normal Sylow 4-subgroup, then $n_4(G) = 3$.
+        Since $n_3(G) = 4$ and each Sylow-3-subgroup of $G$ is cyclic, they contain 8
+        distinct order 3 elements. Now since $n_4(G) = 3$ and each subgroup is distinct,
+        they contain at least 4 distinct even order elements. However, this would imply that
+        $G$ contains at least 13 elements which is a contradiction.
+        
+        Thus $G$ has a normal Sylow 2-subgroup $N$. There are only two groups of order 4,
+        up to isomorphism, the Klein 4-group and the cyclic group of order 4.
+
+        I claim that $N$ is not cyclic. Suppose it was, then $G$ would be a semidirect product
+        of $N = \langle x \rangle$ and $H = \langle y \rangle$ where $x$ has order 4 and $y$ has order 3.
+
+        Now $\operatorname{Aut}(N) \cong \mathbb Z_2$ as the only generators of $N$ are $x, x^3$
+        and an automorphism of a cyclic group is uniquely determined by the image of the generator.
+
+        However if $G = N \rtimes_\varphi H$ and $\varphi: H \to \operatorname{Aut}(N) \cong \mathbb Z_2$
+        then $\varphi$ must be trivial as the orders of the domain and codomain are relatively prime.
+
+        Thus, $G$ is a direct product of abelian groups and hence abelian which implies $H$ is normal.
+        This contradicts the fact that $n_3(G) = 4$. Thus $N$ is isomorphic to the Klein 4-group.
+
+        Now suppose we fix an homomorphism $\varphi: H \to \operatorname{Aut}(N)$,
+        the three non-identity elements of $N$ are indistinguishable so they can be permuted freely by an
+        automorphism. Thus $\operatorname{Aut}(N) \cong S_3$. Now enumerate $N$ as $e, a, b, c$.
+        $\varphi$ is determined by its image on $x$ the generator of $H$. Now $\varphi$
+        is non trivial and since $|x| = 3$ this implies that $|\varphi(x)| = 3$. I.e. it is a 3-cycle.
+        Without loss of generality (up to relabeling of $N$)  $\varphi_x(a) = b$,
+        $\varphi_x(b) = c$ and $\varphi_x(c) = a$.
+
+        Now we define a homomorphism $f: G \to S_3$ specified by
+        \[ x \mapsto (123) \]
+        and
+        \[ N \mapsto \{ e, (12)(34), (14)(23), (13)(24) \} \]
+        and it is clear that
+        \begin{align*}
+            (123)(12)(34)(123)^{-1} &= (14)(23) \\
+            (123)(14)(23)(123)^{-1} &= (13)(24) \\
+            (123)(13)(24)(123)^{-1} &= (12)(34)
+        \end{align*}
+        thus
+        \[ f\varphi_x(k) = (123)f(k)(123)^{-1} \]
+        for any $k \in N$ and therefore for any $k, \ell \in N$:
+        \begin{align*}
+            f(kx^{i}\ell x^j) &= f(k\varphi_{x^i}(\ell)x^{i+j}) \\
+            &= f(k)(123)^{i}f(\ell)(123)^{-i}(123)^{i+j} \\
+            &= f(k)(123)^{i}f(\ell)(123)^{j} \\
+            &= f(kx^{i})f(\ell x^j) \\
+        \end{align*}
+        hence $f$ is a homomorphism. Additionally, it is clearly injective.
+        Thus $G \cong A_4$.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        By the last question $G \cong A_4$ and $G = N \rtimes_\varphi H$ such that
+        every element of $N$ can be written uniquely as $kx^i$ for $k \in N$. Now under the map $f$
+        as defined above this implies that every element of $A_4$ can be written as uniquely as $vc^i$
+        for $v \in V$ and $c = (123)$ with $i \in \{ 0, 1, 2 \}$. Now given $wc^j \in A_4$ we can write
+        \[ vc^iwc^j = vc^iwc^{-i}c^ic^j \]
+        and since $w = w^{-1}$
+        \[ c^2wc^{-2} = c^-1wc = (cwc^{-1})^{-1} = cwc^{-1} \]
+        then with the rule
+                \begin{align*}
+            (123)(12)(34)(123)^{-1} &= (14)(23) \\
+            (123)(14)(23)(123)^{-1} &= (13)(24) \\
+            (123)(13)(24)(123)^{-1} &= (12)(34)
+        \end{align*}
+        the multiplication is fully determined.
+
+        Now $A_4$ is not the direct product of $V$ and $C_3$ as both of these groups
+        are abelian and this would imply $A_4$ is too. However, $A_4$ is not abelian as
+        \[ (123)(12)(34)(123)^{-1} = (14)(23) \neq (12)(34) \]
+    \end{proof}
+\end{enumerate}
+
+\end{document}
