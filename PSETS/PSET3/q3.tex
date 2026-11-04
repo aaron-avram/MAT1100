@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 3}
+\author{Aaron Avram}
+\date{November 3 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 3}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Consider the map $f: k[x] \to k^2$ given by:
+        \[ f: p \mapsto (p(0), p(1)) \]
+        this is clearly a morphism of rings. Now suppose $p \in \ker f$
+        this occurs if and only ig $p(0) = 0$ and $p(1) = 0$ which is holds if and only if $x \mid p$ and $(x-1) \mid p$
+        and so
+        \[ \ker f = \langle x(x-1) \rangle \]
+        now to show that $f$ is surjective suppose $(a, b) \in k^2$
+        then
+        \[ f((b-a)x + a) = (a, b) \]
+        thus $f$ is surjective. Now, by the 1st isomorphism theorem, $f$
+        restricts to an isomorphism
+        \[ \overline{f}: k[x]/\langle x(x-1) \rangle \to k^2 \]
+        given by
+        \[ \overline{f}(\overline p) \to (p(0), p(1)) \]
+        note that this implies that every class in $A$ is uniquely represented
+        by a polynomial of the form $ax + b$, which will be useful in part (c).
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        To find the ideals of $A$ it suffices to classify the ideals $I$
+        lying between $\langle x(x-1) \rangle$ and $k[x]$ by the ideal quotient correspondence.
+        Since $k$ is a field, $k[x]$ is a PID which means this question reduces to finding all monic polynomials
+        dividing $x(x-1)$ and these are clearly $1, x, (x-1), x(x-1)$. Thus the ideals of $A$
+        are $(0), (x)/(x)(x-1),(x-1)/(x)(x-1), A$. Moreover the correspondence between ideals preserves
+        primality/maximality and clearly $x$ and $(x-1)$ are maximal as $k[x]/(x) \cong k[x]/(x-1) \cong k$
+        is a field. Moreover it is clear that $(0)$ and $A$ are not prime or maximal.
+
+        Now to find the ideals of $B$ we apply a similar argument only to the polynomial $x^2$
+        and from this we find it has monic divisors $1, x, x^2$ corresponding to ideals of $B$
+        $(0), (x)/(x^2), B$ where only the middle ideal is prime as
+        \[ k \cong k[x]/\langle x\rangle \cong \frac{k[x]/\langle x^2 \rangle}{\langle x \rangle /\langle x^2 \rangle} \cong \frac{B}{\langle x \rangle / \langle x^2 \rangle} \]
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        To find the units of $A$ we use part (a). Note that an element $(a, b) \in k^2$
+        is a unit if and only if $a, b \neq 0$ as then $(a^{-1}, b^{-1})$ is its inverse.
+        This corresponds to polynomials of the form $(b-a)x + a$ where $a \neq 0$
+        and $b \neq 0$. I.e. the units of $A$ are all polynomials classes represented by $ax + b$
+        where $b \neq 0$ and $a \neq b$. Now $(a, b) \in k^2$ is nilpotent if and only if $a$ and $b$ are
+        which is only possible if $a = b = 0$ as $k$ is a field. Thus the only nilpotent element in $A$
+        is $0$. Now the idempotents in $k^2$ are $(a, b)$ such that $a^2 = a$ and $b^2 = b$
+        but the only idempotents of $k$ are $0$ and $1$ thus the idempotents of $k^2$ are
+        $(0, 0), (1, 0), (0, 1), (1, 1)$. These correspond to the polynomials
+        $0, 1, x, -x + 1$.
+
+        To find the units of $B$ first we write out the multiplication of two representatives
+        $ax + b$ and $cx + d$:
+        \[ (ax + b)(cx + d) = acx^2 + (ad + bc)x + bd = (ad + bc)x + bd \mod x^2 \]
+        where it is clear that all classes in $B$ can be uniquely represented by a polynomial of the form $ax + b$.
+        Now if $ax + b$ is a polynomial for its class to be a unit in $B$ clearly $b$ must be a unit, i.e. $b \neq 0$.
+        Then consider:
+        \[ -ab^{-2}x + b^{-1} \]
+        clearly modulo $x^2$ we have
+        \[  (ax + b)(-ab^{-2}x + b^{-1}) = (ab^{-1} - bab^{-2})x + bb^{-1} = 1 \]
+        hence for all polynomials $ax + b$ with $b \neq 0$ its class in $B$ is a unit.
+
+        Now if a polynomial $ax + b$ is nilpotent it is not a unit so $b = 0$. But then
+        \[ (ax)^2 = a^2x^2 = 0 \mod x^2 \]
+        thus any polynomial of the form $ax$ represents a nilpotent class in $B$.
+        Finally an element of $B$ is nilpotent if and only if modulo $x^2$
+        \[ ax + b = (ax + b)^2 = 2abx + b^2 \]
+        in other words $a = 2ab$ and $b = b^2$. This implies that $b = 0, 1$
+        as $k$ is a field and in either case this forces $a = 0$. Thus the only idempotents
+        in $B$ are $0$ and $1$.
+    \end{proof}
+
+    \item[(4)]
+    \begin{proof}
+        $A$ and $B$ cannot be isomorphic as rings as a ring isomorphism preserves the number
+        of idempotents in a ring, but $A$ has 4 idempotents while $B$ has 2. Hence the two rings cannot be isomorphic.
+    \end{proof}
+\end{enumerate}
+\end{document}
