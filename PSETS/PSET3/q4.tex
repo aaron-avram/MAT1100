@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 3}
+\author{Aaron Avram}
+\date{November 3 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 4}
+\end{align*}
+
+\begin{enumerate}
+    \item[(a)]
+    \begin{proof}
+        Suppose $a + b\sqrt{-5}, c + d\sqrt{-5} \in R$ then
+        \[ N\Big((a + b\sqrt{-5})(c + d\sqrt{-5})\Big) = N\Big((ac - 5bd) + (ad + bc)\sqrt{-5} \Big) = (ac - 5bd)^2 + 5(ad + bc)^2 \]
+        and
+        \begin{align*}
+        N(a + b\sqrt{-5})N(c + d\sqrt{-5}) &= (a^2 + 5b^2)(c^2 + 5d^2) \\
+        &= (ac)^2 + 5(bc)^2 + 5(ad)^2 + (5bd)^2 \\
+        &= (ac)^2 + 5(bc)^2 + 5(ad)^2 + (5bd)^2 + 10abcd - 10abcd \\
+        &= (ac -5bd)^2 + 5(ad + bc)^2
+        \end{align*}
+        hence $N$ is multiplicative.
+
+        Now I claim that $\alpha = a + b\sqrt{-5} \in R$ is a unit if and only if $N(\alpha) = 1$.
+        Suppose that $\alpha$ is a unit then
+        \[ 1 = N(1) = N(\alpha^{-1}\alpha) = N(\alpha^{-1})N(\alpha) \]
+        and since $N \in \mathbb Z^{\geq 0}$ this implies that $N(\alpha) = 1$.
+        Conversely, suppose $N(\alpha) = 1$, observe that $N(\alpha) = \alpha\overline{\alpha}$
+        this implies that $\overline{\alpha} = a - b\sqrt{-5} \in R$ is the multiplicative inverse of $\alpha$.
+
+        Thus to compute the units of $R$ it suffices to find all of the elements of unit norm.
+        In other words, all $a, b \in \mathbb Z$ such that $a^2 + 5b^2 = 1$ and clearly
+        the only possible pairs are $(\pm 1, 0)$ and therefore the only units in $R$
+        are $\pm 1$.
+    \end{proof}
+
+    \item[(b)]
+    \begin{proof}
+        First a useful fact is that in $R$ there are no elements of norm 2 or 3.
+        To see this it suffices to show that the equations
+        \[ a^2 + 5b^2 = 2 \quad a^2 + 5b^2 = 3 \]
+        have no solutions over $\mathbb Z$. This is clear as for $b > 0$ we have
+        $5b^2 > 3, 2$ forcing $b = 0$ but then $a^2 = 2$ and $a^2 = 3$ have no solutions over the integers.
+        Now $N(2) = 4$ and if $\alpha, \beta \in R$ such that $2 = \alpha\beta$ then
+        \[ N(\alpha)N(\beta) = 4 \]
+        and since there are no elements of norm 2 this implies that either $N(\alpha) = 1$ or $N(\beta) = 1$
+        i.e. either $\alpha$ or $\beta$ is a unit and hence $2$ is irreducible.
+
+        Similarly $N(3) = 9$, $N(1 \pm \sqrt{-5}) = 6$ and a similar argument shows that these elements are irreducible.
+        Thus $6$ factors in two ways as a product of irreducibles
+        \[ 6 = 2 \cdot 3 = (1 + \sqrt{-5})(1 - \sqrt{-5}) \]
+        Now since the only units in $R$ are $\pm 1$ these factorizations are distinct
+        as an element with non-trivial imaginary part cannot be associates with a real valued element.
+        Thus $R$ is not a UFD as $6$ does not have a unique factorization into a product of irreducibles.
+    \end{proof}
+
+    \item[(c)]
+    \begin{proof}
+        Let $\alpha = \sqrt{-5}$ for convenience. Now to show that $I$ is a proper ideal,
+        it suffices to show that $1 \notin I$. To see this, note that if $1 \in I$ then there exist
+        $s, t \in R$ such that
+        \[ 1 = 2s + (1 + \alpha)t \]
+        and taking norms this implies
+        \[ 1 = 4N(s) + 6N(t) \]
+        and since the norm is non-negative this is not possible. Thus the quotient ring $R/I$
+        is not the zero ring.
+
+        Now to see that $I$ is maximal it suffices to show that $R/I$ is a field.
+        Suppose $a + b\sqrt{-5} \in R$ let $\alpha = \lfloor a/2 \rfloor$ and $\beta = \lfloor b/2 \rfloor$
+        then $a - 2\alpha, b - 2\beta \in \{ 0, 1 \}$ and
+        \[ a + b\alpha = a + b\alpha - 2(\alpha + \beta\alpha) \mod I \]
+        and hence $R/I$ has at most 4 elements possibly represented by $0, 1, \sqrt{-5}, 1 + \sqrt{-5}$.
+        Now
+        \[ 0 = 1 + \alpha \mod I \]
+        and
+        \[ 1 = 1 - (1 + \alpha) = -\alpha = \alpha \mod I \]
+        thus $R/I$ has at most 2 elements and since $R/I$ is not the zero ring
+        and $R$ is unital this implies that $R/I \cong \mathbb F_2$. Hence $I$ is maximal.
+
+        Finally to see that $I$ is not principal suppose for contradiction that there exists $c \in R$
+        such that $(c) = I$. Then $c \mid 2$ and $c \mid 1 + \alpha$ which implies that
+        that $N(c) \mid 4$ and $N(c) \mid 6$ hence $N(c) \in \{ 1, 2 \}$. Now since no elements in $R$
+        have norm 2 this implies that $N(c) = 1$ and it is a unit. Thus
+        \[ R = (c) = I \]
+        but this is a contradiction as it was shown that $I$ was maximal and hence proper.
+    \end{proof}
+\end{enumerate}
+\end{document}
