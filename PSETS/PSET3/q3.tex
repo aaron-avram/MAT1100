@@ -31,7 +31,7 @@
         Consider the map $f: k[x] \to k^2$ given by:
         \[ f: p \mapsto (p(0), p(1)) \]
         this is clearly a morphism of rings. Now suppose $p \in \ker f$
-        this occurs if and only ig $p(0) = 0$ and $p(1) = 0$ which is holds if and only if $x \mid p$ and $(x-1) \mid p$
+        this occurs if and only if $p(0) = 0$ and $p(1) = 0$ which is holds if and only if $x \mid p$ and $(x-1) \mid p$
         and so
         \[ \ker f = \langle x(x-1) \rangle \]
         now to show that $f$ is surjective suppose $(a, b) \in k^2$
@@ -52,14 +52,18 @@
         lying between $\langle x(x-1) \rangle$ and $k[x]$ by the ideal quotient correspondence.
         Since $k$ is a field, $k[x]$ is a PID which means this question reduces to finding all monic polynomials
         dividing $x(x-1)$ and these are clearly $1, x, (x-1), x(x-1)$. Thus the ideals of $A$
-        are $(0), (x)/(x)(x-1),(x-1)/(x)(x-1), A$. Moreover the correspondence between ideals preserves
-        primality/maximality and clearly $x$ and $(x-1)$ are maximal as $k[x]/(x) \cong k[x]/(x-1) \cong k$
-        is a field. Moreover it is clear that $(0)$ and $A$ are not prime or maximal.
+        are $(0), (x)/(x)(x-1),(x-1)/(x)(x-1), A$. Moreover the 3rd isomorphism theorem implies
+        \[ \frac{k[x]/(x)(x-1)}{(x)/(x)(x-1)} \cong k[x]/(x) \cong k \]
+        hence $(x)/(x)(x-1)$ is maximal and hence prime, and by a similar argument so is $(x-1)/(x)(x-1)$.
+         Moreover it is clear that $(0)$ and $A$ are not prime or maximal. To see that $(0)$ is not prime note that $[x][x-1] = [x(x-1)] = 0$
+        hence $A$ has zero divisors and so $(0)$ cannot be prime.
 
         Now to find the ideals of $B$ we apply a similar argument only to the polynomial $x^2$
         and from this we find it has monic divisors $1, x, x^2$ corresponding to ideals of $B$
-        $(0), (x)/(x^2), B$ where only the middle ideal is prime as
+        $(0), (x)/(x^2), B$ where the middle ideal is maximal as
         \[ k \cong k[x]/\langle x\rangle \cong \frac{k[x]/\langle x^2 \rangle}{\langle x \rangle /\langle x^2 \rangle} \cong \frac{B}{\langle x \rangle / \langle x^2 \rangle} \]
+        and the other two are neither prime nor maximal. To see that $(0)$ is not prime note that $[x][x] = [x^2] = 0$
+        hence $B$ has zero divisors and so $(0)$ cannot be prime.
     \end{proof}
 
     \item[(c)]
@@ -84,12 +88,12 @@
         \[ -ab^{-2}x + b^{-1} \]
         clearly modulo $x^2$ we have
         \[  (ax + b)(-ab^{-2}x + b^{-1}) = (ab^{-1} - bab^{-2})x + bb^{-1} = 1 \]
-        hence for all polynomials $ax + b$ with $b \neq 0$ its class in $B$ is a unit.
+        hence the units of $B$ are precisely the classes of polynomials $ax + b$ with $b \neq 0$.
 
         Now if a polynomial $ax + b$ is nilpotent it is not a unit so $b = 0$. But then
         \[ (ax)^2 = a^2x^2 = 0 \mod x^2 \]
         thus any polynomial of the form $ax$ represents a nilpotent class in $B$.
-        Finally an element of $B$ is nilpotent if and only if modulo $x^2$
+        Finally an element of $B$ is idempotent if and only if modulo $x^2$
         \[ ax + b = (ax + b)^2 = 2abx + b^2 \]
         in other words $a = 2ab$ and $b = b^2$. This implies that $b = 0, 1$
         as $k$ is a field and in either case this forces $a = 0$. Thus the only idempotents
