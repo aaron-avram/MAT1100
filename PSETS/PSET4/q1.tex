@@ -96,7 +96,17 @@
         which is a product of irreducible elements and $g$ is unique up to units
         so the $p_1, \ldots, p_\ell$ are the unique constant irreducible factors of $f$
         and moreover $r_1, \ldots, r_k$ are unique up to units for $\frac{1}{g}f$ and each $m_i$
-        is unique uop to units for each $r_i$ hence the above factorization is unique up to units.
+        is unique up to units for each $r_i$ hence the above factorization is unique up to units.
+
+        $\mathbb Z[x]$ is not a PID as by above $I + J$ is not principal.
+
+        Finally it is clear that $1$ is a greatest common divisor of $x$ and $x - 2$
+        as it is their gcd over $\mathbb Q[x]$. However there does not exist $A, B \in \mathbb Z[x]$
+        such that
+        \[ Ax + B(x - 2) = 1 \]
+        as the only way for the left hand side to be a constant polynomial is for $A = -B$
+        but then the equation $-2B = 1$ has no solutions over the integers. Hence there are no Bezout
+        coefficients for $x, x-2$.
     \end{proof}
 \end{enumerate}
 \end{document}
