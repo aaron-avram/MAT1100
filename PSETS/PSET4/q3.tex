@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 4}
+\author{Aaron Avram}
+\date{November 17 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 3}
+\end{align*}
+
+\begin{enumerate}
+    \item[(i)]
+    \begin{proof}
+        Suppose
+        \[ p(t) = \sum_{i = m}^n a_it^i \in A \]
+        and
+        \[ q(t) = \sum_{j = k}^\ell b_jt^j \in A \]
+        such that $p(x)q(x) = 1$. Without loss of generality,
+        we can assume $a_n, a_m, b_k, b_\ell \neq 0$ as $p(t), q(t) \neq 0$.
+        If $n + \ell > 0$ then
+        the leading coefficient of $p(t)q(t)$ is $a_nb_\ell$ and it corresponds to the term
+        $t^{n + \ell}$ hence it must be 0, but this implies that $a_n = 0$ or $b_\ell = 0$.
+
+        Thus $n + \ell \leq 0$. By a similar argument we find that it cannot be the case that $n + \ell < 0$.
+        Thus $n + \ell = 0$.  A symmetric argument shows that $m + k = 0$. Now this implies that
+        \[ (n - m) + (\ell - k) = 0 \]
+        but $(n-m) \geq 0$ and $(\ell - k) \geq 0$ which implies that $n = m$ and $\ell = k$.
+        Thus $p(t)$ and $q(t)$ are non-zero monomials. Thus the only possible units in $A$ are non-zero monomials,
+        and it is clear that all such polynomials are units in $A$ as if $a \neq 0$, $i \in \mathbb Z$ the element
+        $at^i$ has inverse $a^{-1}t^{-i}$.
+    \end{proof}
+
+    \item[(ii)]
+    \begin{proof}
+        I claim that the field of fractions of $A$ is $k(t)$ the field of rational functions.
+        Clearly $A$ injects into $k(t)$ via the inclusion map. Now suppose $f: A \to S$
+        where $S$ is a ring such that $f(a)$ is a unit for all $a \in A \setminus \{ 0 \}$.
+        Then this defines an injective homomorphism $f|_{k[t]}: k[t] \to S$ where the image of
+        each nonzero element of $k[t]$ is a unit. Thus, by the universal property of the field of fractions,
+        this extends to an injective map $\Phi: k(t) \to S$ such that $\Phi = f$ on $k[t]$.
+        Now $f: A \to S$ is determined by where it maps $k[t]$ as $f(t^{-1}) = f(t)^{-1}$.
+        Thus $\Phi = f$ on $A$. The above two properties uniquely characterize the field of fractions
+        and this implies that $k(t) = \operatorname{Frac}(A)$.
+    \end{proof}
+
+    \item[(iii)]
+    \begin{proof}
+        Suppose $\phi: A \to A$ is a ring automorphism fixing $A$. Then
+        \[ \phi(\sum_{i = m}^nb_it^i) = \sum_{i = m}^nb_i\phi(t^i) = \sum_{i = m}^nb_i\phi(t)^i \]
+        thus $\phi$ is determined by where it maps $t$. Clearly $\phi$ must map $t$
+        to a non-constant polynomial and a ring homomorphism must map units to units
+        which implies that $\phi$ must map $t$ to a non-constant monomial. Now
+        if $\phi(t) = ct^i$, $|i| > 1$. Then $\phi$ is not surjective
+        as any element in the image will only contain powers of $t$ that are a multiple of $i$
+        and hence not contain $t$. Thus
+        \[ \phi(t) = ct^i \]
+        $c \neq 0$ and $i = \pm 1$. The inverse of $\phi$ is the map $t \to c^{-1}t^{-i}$.
+
+        Thus all ring automorphims of $A$ fixing $k$ are of the form
+        \begin{align*}
+            \phi(t) = ct^i \\
+            \phi\mid_k = \operatorname{id} \\
+        \end{align*}
+        with $c \neq 0$ and $i = \pm 1$.
+    \end{proof}
+\end{enumerate}
+\end{document}

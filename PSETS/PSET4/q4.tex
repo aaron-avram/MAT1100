@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tikz-cd}
+
+
+\title{MAT1100 Homework 4}
+\author{Aaron Avram}
+\date{November 17 2026}
+
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+
+\maketitle
+
+\begin{align*}
+    \textbf{Question 4}
+\end{align*}
+
+\begin{enumerate}
+    \item[(i)]
+    \begin{proof}
+        Suppose $f \in R[x]$ is primitive and $g \in R[x]$.
+        Suppose $fh = g$ for some $h \in K[x]$. Now write
+        \[ h(x) = \sum_{i = 0}^n a_ix^i \]
+        where $a_i = p_i/q_i$ for $p_i, q_i \in R$ with $\gcd(p_i, q_i) = 1$.
+        Then let $m = \gcd(q_0, \ldots, q_n)$. Clearly then $mh(x)$ is a polynomial with coefficients in $R$,
+        suppose that $a$ is the gcd of its coefficients. Then $\frac{m}{a}h(x)$ is a primitive polynomial
+        and
+        \[ g = \frac{a}{m}f(\frac{m}{a}h) \]
+        now $f(\frac{m}{a}h)$ is a primitive polynomial so this implies
+        that $\frac{a}{m}$ is the gcd of the coefficients of $g$. Hence $\frac{a}{m} \in R$
+        and therefore
+        \[ h = \frac{a}{m}(\frac{m}{a}h) \in R[x] \]
+    \end{proof}
+
+    \item[(ii)]
+    \begin{proof}
+        Since $f$ is monic it is clearly primitive. Now suppose $m \in R$
+        such that $mh(x) \in R[x]$ and moreover suppose $a$ is the gcd of the coefficients
+        of $mh(x)$. Then
+        \[ f = (\frac{a}{m}g)(\frac{m}{a}h) \]
+        and by part (i) this implies that $\frac{a}{m}g \in R[x]$.
+        Now $g, h$ are monic so for $\frac{m}{a}h$ to be in $R[x]$ we must have $a \mid m$
+        and similarly for $\frac{a}{m}g$ to be in $R[x]$ we must have $m \mid a$, therefore
+        there exists a unit $v$ such that $a = mv$ so
+        \[ \frac{a}{m}g = vg \in R[x] \]
+        and then multiplying by $v^{-1}$ we find that $g \in R[x]$ and similarly with $h$.
+    \end{proof}
+
+    \item[(iii)]
+    \begin{proof}
+        Suppose $\alpha^n + a_{n-1}\alpha^n + \ldots + a_1\alpha + a_0 = 0$.
+        Then write $\alpha = \frac{p}{q}$, $p, q \in R$ with $q \neq 0$ such that their gcd is a unit.
+        Now taking the equation
+        \[ \alpha^n + a_{n-1}\alpha^{n-1}+ \ldots + a_1\alpha + a_0 = 0 \]
+        and multiplying by $q^n$ we find that
+        \[ p^n + a_{n-1}p^{n-1}q + \ldots a_1pq^{n-1} + a_0q^n = 0 \]
+        and
+        \[ p^n = q(-a_{n-1}p^{n-1} - \ldots - a_1pq^{n-2} - a_0q^{n-1}) \]
+        hence $q \mid p^n$ and since $p$ and $q$ are relatively prime this implies
+        that $q \mid p$. Thus $q \mid \gcd(p, q)$ which implies that $q$ is a unit
+        and hence $\alpha = pq^{-1} \in R$.
+
+    \end{proof}
+\end{enumerate}
+\end{document}

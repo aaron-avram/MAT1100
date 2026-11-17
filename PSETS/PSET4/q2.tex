@@ -9,9 +9,9 @@
 \usepackage{tikz-cd}
 
 
-\title{MAT1100 Homework 3}
+\title{MAT1100 Homework 4}
 \author{Aaron Avram}
-\date{November 1 2026}
+\date{November 17 2026}
 
 \begin{document}
 \newtheorem{definition}{Definition}
@@ -26,7 +26,76 @@
 \end{align*}
 
 \begin{enumerate}
-    \item 
+    \item[(i)]
+    \begin{proof}
+        Fix the notation that $\| \cdot \|$ refers to the usual complex norm on $\mathbb C$.
+        Observe that
+        \begin{align*}
+        \| a + b \omega \|^2 &= \| a + b\Big(\frac{-1 + \sqrt{-3}}{2}\Big) \|^2 \\
+        &= (a - \frac{b}{2})^2 + (\frac{b\sqrt{3}}{2})^2 \\
+        &= a^2 - ab + \frac{b^2}{4} + \frac{3b^2}{4} \\
+        &= a^2 - ab + b^2 \\
+        &= N(a + b\omega)
+        \end{align*}
+        and moreover it is obvious that $N(0) = 0$.
+
+        Next observe that $\{ 1, \omega \}$ forms a basis for $\mathbb C$
+        as an $\mathbb R$ vector space. Since $\dim_{\mathbb R}\mathbb C = 2$
+        it suffices to show that $1, \omega$ are linearly independent and this is trivial,
+        as if $c_1, c_2 \in \mathbb R$ such that
+        \[ c_1 + c_2\omega = 0 \]
+        then taking imaginary parts implies $c_2 = 0$ which then implies $c_1 = 0$.
+
+        Now given $z, w \in R$ such that $w \neq 0$ we can divide $z$ by $w$ and since $\{ 1, \omega \}$
+        is a basis there exist $a, b \in \mathbb R$ such that
+        \[ \frac{z}{w} = a + b\omega \]
+        then by rounding we can find $\alpha, \beta \in \mathbb Z$ such that
+        $|\alpha - a|, |\beta - b| \leq \frac{1}{2}$. Define $q = \alpha + \beta \omega \in R$.
+        Then $r = z - qw$. To show that this defines a Euclidean norm:
+        \begin{align*}
+            N(r) &= N(z - qw) \\
+            &= \|z - qw \|^2 \\
+            &= \| w \|^2\|a + b\omega - (\alpha + \beta \omega)\|^2 \\
+            &= \| w \|^2\Big((a - \alpha)^2 + (a - \alpha)(b - \beta) + (b - \beta)^2 \Big) \\
+            &\leq \|w \|^2\Big(\frac{1}{4} + \frac{1}{4} + \frac{1}{4}) \\
+            &< \| w \|^2 \\
+            &= N(w)
+        \end{align*}
+    \end{proof}
+
+    \item[(ii)]
+    \begin{proof}
+        Note the useful identities $\omega^2 = \overline{\omega} = -1 - \omega$ and $\omega\overline{\omega} = \| \omega \|^2 = 1$.
+
+        First we divide $\alpha$ by $\beta$ in $\mathbb C$
+        \begin{align*}
+            \frac{17 + \omega}{8 + 5\omega} &= \frac{(17 + \omega)(8 + 5\overline{\omega})}{\| 8 + 5\omega \|^2} \\
+            &= \frac{136 + 8\omega + 85\overline{\omega} + 5}{8^2 - 8 \cdot 5 + 5^2} \\
+            &= \frac{136 + 8\omega + 85(-1-\omega) + 5}{64 - 40 + 25} \\
+            &= \frac{56 - 77\omega}{49} \\
+            &= \frac{8 - 11\omega}{7} 
+        \end{align*}
+        and rounding we get the quotient $1 - 2\omega$ to find the remainder:
+        \begin{align*}
+            17 + \omega - (8 + 5\omega)(1 - 2\omega) &= 17 + \omega - 8 - 5\omega + 16\omega + 10\omega^2 \\
+            &= 9 + 12\omega + 10(-1-\omega) \\
+            &= -1 + 2\omega
+        \end{align*}
+        and clearly $N(-1 + 2\omega) = 1 + 2 + 4 = 7 < 49 = N(8 + 5\omega)$.
+
+        Now we divide $\beta$ by the remainder
+        \begin{align*}
+            \frac{8 + 5\omega}{-1 + 2\omega} &= \frac{(8 + 5\omega)(-1 + 2\overline{\omega})}{7} \\
+            &= \frac{-8 -5\omega + 16\overline{\omega} + 10}{7} \\
+            &= \frac{2 - 5\omega + 16(-1-\omega)}{7} \\
+            &= \frac{-14 - 21\omega}{7} \\
+            &= -2 - 3\omega
+        \end{align*}
+        hence the remainder of this division is $0$ and therefore 
+        \[ \gcd(17 + \omega, 8 + 5\omega) = -1 + 2\omega \]
+        with Bezout coefficients $1$ and $(-1 + 2\omega)$ respectively.
+
+    \end{proof}
 \end{enumerate}
 
 \end{document}
