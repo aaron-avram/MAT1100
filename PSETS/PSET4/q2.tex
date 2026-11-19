@@ -37,7 +37,7 @@
         &= a^2 - ab + b^2 \\
         &= N(a + b\omega)
         \end{align*}
-        and moreover it is obvious that $N(0) = 0$.
+        hence $N$ takes value in the non-negative integers and moreover it is obvious that $N(0) = 0$.
 
         Next observe that $\{ 1, \omega \}$ forms a basis for $\mathbb C$
         as an $\mathbb R$ vector space. Since $\dim_{\mathbb R}\mathbb C = 2$
@@ -56,11 +56,12 @@
             N(r) &= N(z - qw) \\
             &= \|z - qw \|^2 \\
             &= \| w \|^2\|a + b\omega - (\alpha + \beta \omega)\|^2 \\
-            &= \| w \|^2\Big((a - \alpha)^2 + (a - \alpha)(b - \beta) + (b - \beta)^2 \Big) \\
-            &\leq \|w \|^2\Big(\frac{1}{4} + \frac{1}{4} + \frac{1}{4}) \\
+            &= \| w \|^2\Big((a - \alpha)^2 - (a - \alpha)(b - \beta) + (b - \beta)^2 \Big) \\
+            &\leq \|w \|^2\Big(\frac{1}{4} - \frac{1}{4} + \frac{1}{4}) \\
             &< \| w \|^2 \\
             &= N(w)
         \end{align*}
+        Hence $R$ is a Euclidean domain which means it is also a Prinicipal Ideal Domain and Unique Factorization Domain.
     \end{proof}
 
     \item[(ii)]
@@ -91,8 +92,8 @@
             &= \frac{-14 - 21\omega}{7} \\
             &= -2 - 3\omega
         \end{align*}
-        hence the remainder of this division is $0$ and therefore 
-        \[ \gcd(17 + \omega, 8 + 5\omega) = -1 + 2\omega \]
+        hence the remainder of this division is $0$ and therefore gcd of $17 + \omega$ and $8 + 5\omega$ is
+        \[  -1 + 2\omega \]
         with Bezout coefficients $1$ and $(-1 + 2\omega)$ respectively.
 
     \end{proof}
