@@ -32,7 +32,7 @@
         \[ p(t) = \sum_{i = m}^n a_it^i \in A \]
         and
         \[ q(t) = \sum_{j = k}^\ell b_jt^j \in A \]
-        such that $p(x)q(x) = 1$. Without loss of generality,
+        such that $p(t)q(t) = 1$. Without loss of generality,
         we can assume $a_n, a_m, b_k, b_\ell \neq 0$ as $p(t), q(t) \neq 0$.
         If $n + \ell > 0$ then
         the leading coefficient of $p(t)q(t)$ is $a_nb_\ell$ and it corresponds to the term
@@ -43,35 +43,39 @@
         \[ (n - m) + (\ell - k) = 0 \]
         but $(n-m) \geq 0$ and $(\ell - k) \geq 0$ which implies that $n = m$ and $\ell = k$.
         Thus $p(t)$ and $q(t)$ are non-zero monomials. Thus the only possible units in $A$ are non-zero monomials,
-        and it is clear that all such polynomials are units in $A$ as if $a \neq 0$, $i \in \mathbb Z$ the element
+        and it is clear that all such Laurent monomials are units in $A$ as if $a \neq 0$, $i \in \mathbb Z$ the element
         $at^i$ has inverse $a^{-1}t^{-i}$.
     \end{proof}
 
     \item[(ii)]
     \begin{proof}
         I claim that the field of fractions of $A$ is $k(t)$ the field of rational functions.
-        Clearly $A$ injects into $k(t)$ via the inclusion map. Now suppose $f: A \to S$
-        where $S$ is a ring such that $f(a)$ is a unit for all $a \in A \setminus \{ 0 \}$.
-        Then this defines an injective homomorphism $f|_{k[t]}: k[t] \to S$ where the image of
-        each nonzero element of $k[t]$ is a unit. Thus, by the universal property of the field of fractions,
-        this extends to an injective map $\Phi: k(t) \to S$ such that $\Phi = f$ on $k[t]$.
-        Now $f: A \to S$ is determined by where it maps $k[t]$ as $f(t^{-1}) = f(t)^{-1}$.
-        Thus $\Phi = f$ on $A$. The above two properties uniquely characterize the field of fractions
-        and this implies that $k(t) = \operatorname{Frac}(A)$.
+        Suppose $f/g \in k(t)$ for $f, g \in k[x]$. Then $f, g \in A$
+        so $f/g \in \operatorname{Frac}(A)$. Now clearly $A \subseteq k(t)$
+        as every Laurent monomial is a linear combination of integer powers of $t$.
+        This gives the relation $A \subseteq k(t) \subseteq \operatorname{Frac}(A)$,
+        since $k(t)$ is a field, the universal property of the field of fractions implies that $k(t) = \operatorname{Frac}(A)$.
     \end{proof}
 
     \item[(iii)]
     \begin{proof}
-        Suppose $\phi: A \to A$ is a ring automorphism fixing $A$. Then
+        Suppose $\phi: A \to A$ is a ring automorphism fixing $k$. Then
         \[ \phi(\sum_{i = m}^nb_it^i) = \sum_{i = m}^nb_i\phi(t^i) = \sum_{i = m}^nb_i\phi(t)^i \]
         thus $\phi$ is determined by where it maps $t$. Clearly $\phi$ must map $t$
-        to a non-constant polynomial and a ring homomorphism must map units to units
+        to a non-constant polynomial as if not its image would be contained in $k$,
+        meaning it it not surjective. A ring homomorphism must map units to units
         which implies that $\phi$ must map $t$ to a non-constant monomial. Now
-        if $\phi(t) = ct^i$, $|i| > 1$. Then $\phi$ is not surjective
+        if $\phi(t) = ct^i$, $|i| > 1$, then $\phi$ is not surjective
         as any element in the image will only contain powers of $t$ that are a multiple of $i$
         and hence not contain $t$. Thus
         \[ \phi(t) = ct^i \]
-        $c \neq 0$ and $i = \pm 1$. The inverse of $\phi$ is the map $t \to c^{-1}t^{-i}$.
+        $c \neq 0$ and $i = \pm 1$. The inverse of $\phi$ is the map $t \to c^{-1}t^{i}$.
+        To see that the claimed inverse map actually extends to a ring automorphism of $A$
+        fixing $k$ note that
+        \[ k[x, y]/(1 - xy) \cong A \]
+        where the isomorphism is given by $x \to y$ and $y \to t^{-1}$ so
+        given any unit $c \in A$ this determines a ring endomorphism of $A$
+        that fixes $k$ by mapping $x \to c$ and $y \to c^{-1}$. 
 
         Thus all ring automorphims of $A$ fixing $k$ are of the form
         \begin{align*}

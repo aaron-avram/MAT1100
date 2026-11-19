@@ -28,23 +28,27 @@
 \begin{enumerate}
     \item[(i)]
     \begin{proof}
-        Suppose $f \in R[x]$ is primitive and $g \in R[x]$.
+        If $g = 0$ there is nothing to prove, so suppose $g \neq 0$. If $f \in R[x]$ is primitive and $g \in R[x]$.
         Suppose $fh = g$ for some $h \in K[x]$. Now write
         \[ h(x) = \sum_{i = 0}^n a_ix^i \]
         where $a_i = p_i/q_i$ for $p_i, q_i \in R$ with $\gcd(p_i, q_i) = 1$.
-        Then let $m = \gcd(q_0, \ldots, q_n)$. Clearly then $mh(x)$ is a polynomial with coefficients in $R$,
+        Then let $m = \operatorname{lcm}(q_0, \ldots, q_n)$. Clearly then $mh(x)$ is a polynomial with coefficients in $R$,
         suppose that $a$ is the gcd of its coefficients. Then $\frac{m}{a}h(x)$ is a primitive polynomial
         and
         \[ g = \frac{a}{m}f(\frac{m}{a}h) \]
-        now $f(\frac{m}{a}h)$ is a primitive polynomial so this implies
-        that $\frac{a}{m}$ is the gcd of the coefficients of $g$. Hence $\frac{a}{m} \in R$
+        now $P := f(\frac{m}{a}h)$ is a primitive polynomial by Gauss's lemma so this implies
+        and we have
+        \[ mg = aP \]
+        and since $P$ is primitive the the gcd of the coefficients of $aP$ is $a$
+        but $aP = mg$ so the gcd of its coefficients is divisible by $m$ therefore $\frac{a}{m} \in R$
         and therefore
-        \[ h = \frac{a}{m}(\frac{m}{a}h) \in R[x] \]
+        \[ \frac{a}{m}(\frac{m}{a}h) = h \in R[x] \]
+        as required.
     \end{proof}
 
     \item[(ii)]
     \begin{proof}
-        Since $f$ is monic it is clearly primitive. Now suppose $m \in R$
+        Suppose $m \in R$
         such that $mh(x) \in R[x]$ and moreover suppose $a$ is the gcd of the coefficients
         of $mh(x)$. Then
         \[ f = (\frac{a}{m}g)(\frac{m}{a}h) \]
@@ -58,17 +62,10 @@
 
     \item[(iii)]
     \begin{proof}
-        Suppose $\alpha^n + a_{n-1}\alpha^n + \ldots + a_1\alpha + a_0 = 0$.
-        Then write $\alpha = \frac{p}{q}$, $p, q \in R$ with $q \neq 0$ such that their gcd is a unit.
-        Now taking the equation
-        \[ \alpha^n + a_{n-1}\alpha^{n-1}+ \ldots + a_1\alpha + a_0 = 0 \]
-        and multiplying by $q^n$ we find that
-        \[ p^n + a_{n-1}p^{n-1}q + \ldots a_1pq^{n-1} + a_0q^n = 0 \]
-        and
-        \[ p^n = q(-a_{n-1}p^{n-1} - \ldots - a_1pq^{n-2} - a_0q^{n-1}) \]
-        hence $q \mid p^n$ and since $p$ and $q$ are relatively prime this implies
-        that $q \mid p$. Thus $q \mid \gcd(p, q)$ which implies that $q$ is a unit
-        and hence $\alpha = pq^{-1} \in R$.
+        Suppose $f(x) = \alpha^n + a_{n-1}\alpha^{n-1} + \ldots + a_1\alpha + a_0 = 0$.
+        Then $(x - \alpha)$ is a monic factor of $f(x)$. Suppose $g(x) \in K[x]$
+        such that $f(x) = (x - \alpha)g(x)$ with $g(x)$ clearly monic as $f(x)$ is monic.
+        By (ii) this implies that $(x - \alpha), g(x) \in R[x]$ and therefore $\alpha \in R$.
 
     \end{proof}
 \end{enumerate}
